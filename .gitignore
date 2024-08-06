@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files / Other
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+.idea/
+assets/
+*.css
+*.html
+*.xml
+
+# Environments
+venv/
+
+
+
