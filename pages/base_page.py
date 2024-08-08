@@ -20,3 +20,9 @@ class BasePage:
         Find a web element using the given selector.
         """
         return self.driver.find_element(*selector)
+
+    def find_elements(self, *selectors):
+        """
+        Find a web element using the given selector.
+        """
+        return self.driver.find_elements(*selectors)

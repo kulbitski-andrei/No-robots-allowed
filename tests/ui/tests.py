@@ -85,11 +85,15 @@ def test_delete_contact(browser):
     page_object = LoginPage(browser)
     page_object.complete_login(const.EMAIL, const.PASSWORD)
     page_object = ContactListPage(browser)
+    contact_count_before_delete = len(page_object.locate_contact_rows())
+    logger.info("Contact count: %s", contact_count_before_delete)
     page_object.open_contact()
     page_object = ContactDetailsPage(browser)
     page_object.click_delete_contact()
     alert = browser.switch_to.alert
     alert.accept()
     page_object = ContactListPage(browser)
-    to_fix = page_object.locate_contact_row()  # NEED TO PLACE ASSERTION HERE
+    contact_count_after_delete = len(page_object.locate_contact_rows())
+    logger.info("Contact count: %s", contact_count_after_delete)
+    assert contact_count_before_delete - contact_count_after_delete == 1
     logger.info("TEST 3: Executed")
