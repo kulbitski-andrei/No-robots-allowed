@@ -5,7 +5,7 @@ import pytest
 from pages.contact_list_page import ContactListPage
 from pages.contact_details_page import ContactDetailsPage
 from pages.edit_contact_page import EditContactPage
-from conftest import browser
+# from conftest import browser
 import test_data.constants as const
 from logger.log_setup import logger
 
