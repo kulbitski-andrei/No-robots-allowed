@@ -7,6 +7,7 @@ from pages.contact_list_page import ContactListPage
 from pages.contact_details_page import ContactDetailsPage
 from pages.edit_contact_page import EditContactPage
 from pages.add_contact_page import AddContactPage
+from conftest import browser
 import test_data.constants as const
 from logger.log_setup import logger
 
@@ -16,19 +17,7 @@ def test_create_new_contact(browser):
     """
     Test the creation of a new contact.
     """
-    logger.info("TEST 1: CREATE NEW CONTACT. Executing...")
-    page_object = LoginPage(browser)
-    page_object.complete_login(const.EMAIL, const.PASSWORD)
-    page_object = ContactListPage(browser)
-    page_object.click_add_contact()
-    page_object = AddContactPage(browser)
-
-    page_object.complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME,
-                                         const.BIRTHDATE, const.EMAIL_ADDRESS,
-                                         const.PHONE, const.STREET1,
-                                         const.STREET2, const.CITY,
-                                         const.STATE_PROVINCE,
-                                         const.POSTAL_CODE, const.COUNTRY)
+    logger.info("TEST 1: Start execution")
     page_object = ContactListPage(browser)
     assert page_object.locate_contact_row() is not None
     logger.info("TEST 1: Executed")
@@ -39,9 +28,7 @@ def test_edit_contact(browser):
     """
     Test the editing of an existing contact.
     """
-    logger.info("TEST 2: EDIT CONTACT. Executing...")
-    page_object = LoginPage(browser)
-    page_object.complete_login(const.EMAIL, const.PASSWORD)
+    logger.info("TEST 2: Start execution")
     page_object = ContactListPage(browser)
     page_object.open_contact()
     page_object = ContactDetailsPage(browser)
@@ -80,9 +67,7 @@ def test_delete_contact(browser):
     """
     Test the deletion of an existing contact.
     """
-    logger.info("TEST 3: DELETE CONTACT. Executing...")
-    page_object = LoginPage(browser)
-    page_object.complete_login(const.EMAIL, const.PASSWORD)
+    logger.info("TEST 3: Start execution")
     page_object = ContactListPage(browser)
     contact_count_before_delete = len(page_object.locate_contact_rows())
     logger.info("Contact count: %s", contact_count_before_delete)

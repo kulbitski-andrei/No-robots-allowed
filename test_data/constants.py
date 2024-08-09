@@ -1,6 +1,7 @@
 """TEST DATA PROJECT"""
 
 URL = "https://thinking-tester-contact-list.herokuapp.com/"
+URL_CONTACTS = "https://thinking-tester-contact-list.herokuapp.com/contactList"
 
 EMAIL = "hello.world@gmail.com"
 PASSWORD = "password_password"
