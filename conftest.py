@@ -7,7 +7,6 @@ from selenium.webdriver.chrome.options import Options
 from pages.login_page import LoginPage
 from pages.contact_list_page import ContactListPage
 from pages.contact_details_page import ContactDetailsPage
-from pages.edit_contact_page import EditContactPage
 from pages.add_contact_page import AddContactPage
 import test_data.constants as const
 from logger.log_setup import logger
@@ -53,4 +52,3 @@ def browser():
         time.sleep(1)
         alert.accept()
     chrome_browser.quit()
-
