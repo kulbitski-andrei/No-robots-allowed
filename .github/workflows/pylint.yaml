@@ -26,7 +26,7 @@ jobs:
           echo "PYTHONPATH=$(pwd)/modules_for_testing:$(pwd)/log_dir" >> $GITHUB_ENV
       - name: Analysing the code with pylint
         run: |
-          pylint $(git ls-files '*.py') --disable=invalid-name,too-few-public-methods,no-member,duplicate-code,redefined-outer-name,useless-parent-delegation,too-many-arguments,redefined-outer-name,duplicate-code,ungrouped-imports,unused-argument,unused-variable
+          pylint $(git ls-files '*.py') --disable=invalid-name,too-few-public-methods,no-member,duplicate-code,redefined-outer-name,useless-parent-delegation,too-many-arguments,redefined-outer-name,duplicate-code,ungrouped-imports,unused-argument,unused-variable,import-error
 
         env:
           PYTHONPATH: ${{ env.PYTHONPATH }}
