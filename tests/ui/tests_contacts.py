@@ -11,27 +11,27 @@ from logger.log_setup import logger
 
 
 @pytest.mark.create_new_contact
-def test_create_new_contact(browser):
+def test_create_new_contact(browser_contacts):
     """
     Test the creation of a new contact.
     """
     logger.info("TEST 1: Start execution")
-    page_object = ContactListPage(browser)
+    page_object = ContactListPage(browser_contacts)
     assert page_object.locate_contact_row() is not None
     logger.info("TEST 1: Executed")
 
 
 @pytest.mark.edit_contact
-def test_edit_contact(browser):
+def test_edit_contact(browser_contacts):
     """
     Test the editing of an existing contact.
     """
     logger.info("TEST 2: Start execution")
-    page_object = ContactListPage(browser)
+    page_object = ContactListPage(browser_contacts)
     page_object.open_contact()
-    page_object = ContactDetailsPage(browser)
+    page_object = ContactDetailsPage(browser_contacts)
     page_object.click_edit_contact()
-    page_object = EditContactPage(browser)
+    page_object = EditContactPage(browser_contacts)
     time.sleep(1)  # This one is really needed!
     page_object.complete_edit_contact(const.EDIT_FIRST_NAME,
                                       const.EDIT_LAST_NAME,
@@ -44,7 +44,7 @@ def test_edit_contact(browser):
                                       const.EDIT_STATE_PROVINCE,
                                       const.EDIT_POSTAL_CODE,
                                       const.EDIT_COUNTRY)
-    page_object = ContactDetailsPage(browser)
+    page_object = ContactDetailsPage(browser_contacts)
     time.sleep(1)  # This one is really needed!
     assert page_object.locate_first_name().text == "RICARDO"
     assert page_object.locate_last_name().text == "DIAZ"
@@ -61,20 +61,20 @@ def test_edit_contact(browser):
 
 
 @pytest.mark.delete_contact
-def test_delete_contact(browser):
+def test_delete_contact(browser_contacts):
     """
     Test the deletion of an existing contact.
     """
     logger.info("TEST 3: Start execution")
-    page_object = ContactListPage(browser)
+    page_object = ContactListPage(browser_contacts)
     contact_count_before_delete = len(page_object.locate_contact_rows())
     logger.info("Contact count: %s", contact_count_before_delete)
     page_object.open_contact()
-    page_object = ContactDetailsPage(browser)
+    page_object = ContactDetailsPage(browser_contacts)
     page_object.click_delete_contact()
-    alert = browser.switch_to.alert
+    alert = browser_contacts.switch_to.alert
     alert.accept()
-    page_object = ContactListPage(browser)
+    page_object = ContactListPage(browser_contacts)
     contact_count_after_delete = len(page_object.locate_contact_rows())
     logger.info("Contact count: %s", contact_count_after_delete)
     assert contact_count_before_delete - contact_count_after_delete == 1
