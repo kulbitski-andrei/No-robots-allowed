@@ -63,6 +63,7 @@ class SignupPage(BasePage):
         self.enter_last_name(last_name)
         self.enter_email(email)
         self.enter_password(password)
+        self.click_submit()
 
     def locate_validation_message(self):
         """
