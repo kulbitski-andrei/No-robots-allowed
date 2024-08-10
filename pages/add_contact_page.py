@@ -15,6 +15,7 @@ state_province_field = (By.ID, "stateProvince")
 postal_code_field = (By.ID, "postalCode")
 country_field = (By.ID, "country")
 submit_button = (By.ID, "submit")
+validation_message_field = (By.ID, "error")
 
 
 class AddContactPage(BasePage):
@@ -128,3 +129,11 @@ class AddContactPage(BasePage):
         self.enter_postal_code(postal_code)
         self.enter_country(country)
         self.click_submit()
+
+    def locate_validation_message(self):
+        """
+        Finds validation message on the page.
+        """
+        validation_message = self.find_element(validation_message_field)
+        text = validation_message.text
+        return text
