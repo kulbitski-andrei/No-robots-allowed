@@ -1,10 +1,21 @@
 """TEST DATA PROJECT"""
 
-URL = "https://thinking-tester-contact-list.herokuapp.com/"
+# URLS
+URL_LANDING = "https://thinking-tester-contact-list.herokuapp.com/"
 URL_CONTACTS = "https://thinking-tester-contact-list.herokuapp.com/contactList"
 
+# USER CREDENTIALS
 EMAIL = "hello.world@gmail.com"
 PASSWORD = "password_password"
+USER_FIRST_NAME = "Robert"
+USER_LAST_NAME = "Smith"
+
+# INVALID CREDENTIALS
+INVALID_EMAIL = "helloworldgmailcom"
+WRONG_PASSWORD = "1234567890"
+
+
+# CONTACT DATA
 FIRST_NAME = "John"
 LAST_NAME = "Doe"
 BIRTHDATE = "2000-01-01"

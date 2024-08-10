@@ -13,16 +13,40 @@ from logger.log_setup import logger
 
 
 @pytest.fixture
-def browser():
+def browser_sign_up_log_in():
     """
-    Fixture to set up and tear down the browser instance for each test.
+    Fixture to set up and tear down the browser instance for testing contacts.
+    At the start of each test log in is performed,
+    new John Doe contact is created.
+    At the start of each test created contact is deleted.
     """
     logger.info("Fixture: Setting up started")
     chrome_options = Options()
     chrome_options.add_argument("--disable-search-engine-choice-screen")
     chrome_browser = webdriver.Chrome(options=chrome_options)
     chrome_browser.implicitly_wait(5)
-    chrome_browser.get(const.URL)
+    chrome_browser.get(const.URL_LANDING)
+    yield chrome_browser
+    chrome_browser.get(const.URL_CONTACTS)
+    page_object = ContactListPage(chrome_browser)
+    page_object.logout()
+    chrome_browser.quit()
+
+
+@pytest.fixture
+def browser_contacts():
+    """
+    Fixture to set up and tear down the browser instance for testing contacts.
+    At the start of each test log in is performed,
+    new John Doe contact is created.
+    At the start of each test created contact is deleted.
+    """
+    logger.info("Fixture: Setting up started")
+    chrome_options = Options()
+    chrome_options.add_argument("--disable-search-engine-choice-screen")
+    chrome_browser = webdriver.Chrome(options=chrome_options)
+    chrome_browser.implicitly_wait(5)
+    chrome_browser.get(const.URL_LANDING)
     logger.debug("Fixture: Logging in")
     page_object = LoginPage(chrome_browser)
     page_object.complete_login(const.EMAIL, const.PASSWORD)

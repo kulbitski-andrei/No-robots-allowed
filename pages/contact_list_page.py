@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
 add_contact_button = (By.ID, "add-contact")
+logout_button = (By.ID, "logout")
 contact_row = (By.XPATH, "//tr[@class=\"contactTableBodyRow\"][1]")
 contact_row_list = (By.XPATH, "//tr[@class=\"contactTableBodyRow\"]")
 
@@ -43,3 +44,10 @@ class ContactListPage(BasePage):
         """
         list_of_rows = self.find_elements(*contact_row_list)
         return list_of_rows
+
+    def logout(self):
+        """
+        Log out from the website.
+        """
+        logout_element = self.find_element(logout_button)
+        logout_element.click()
