@@ -4,7 +4,6 @@ import time
 import pytest
 from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
-# from conftest import browser_sign_up_log_in
 import test_data.constants as const
 from logger.log_setup import logger
 
