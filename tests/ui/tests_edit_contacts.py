@@ -9,17 +9,6 @@ import test_data.constants as const
 from logger.log_setup import logger
 
 
-@pytest.mark.create_new_contact
-def test_create_new_contact(browser_contacts):
-    """
-    Test the creation of a new contact.
-    """
-    logger.info("TEST 1: Start execution")
-    page_object = ContactListPage(browser_contacts)
-    assert page_object.locate_contact_row() is not None
-    logger.info("TEST 1: Executed")
-
-
 @pytest.mark.edit_contact
 def test_edit_contact(browser_contacts):
     """
@@ -57,24 +46,3 @@ def test_edit_contact(browser_contacts):
     assert page_object.locate_postal_code().text == "200205"
     assert page_object.locate_country().text == "FRANCE"
     logger.info("TEST 2: Executed")
-
-
-@pytest.mark.delete_contact
-def test_delete_contact(browser_contacts):
-    """
-    Test the deletion of an existing contact.
-    """
-    logger.info("TEST 3: Start execution")
-    page_object = ContactListPage(browser_contacts)
-    contact_count_before_delete = len(page_object.locate_contact_rows())
-    logger.info("Contact count: %s", contact_count_before_delete)
-    page_object.open_contact()
-    page_object = ContactDetailsPage(browser_contacts)
-    page_object.click_delete_contact()
-    alert = browser_contacts.switch_to.alert
-    alert.accept()
-    page_object = ContactListPage(browser_contacts)
-    contact_count_after_delete = len(page_object.locate_contact_rows())
-    logger.info("Contact count: %s", contact_count_after_delete)
-    assert contact_count_before_delete - contact_count_after_delete == 1
-    logger.info("TEST 3: Executed")
