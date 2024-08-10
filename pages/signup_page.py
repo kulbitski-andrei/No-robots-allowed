@@ -52,3 +52,13 @@ class SignupPage(BasePage):
         """
         submit_element = self.find_element(submit_button)
         submit_element.click()
+
+    def complete_signup(self, first_name, last_name, email, password):
+        """
+        Complete the sign up process by entering the name,
+        email and password and submitting the form.
+        """
+        self.enter_first_name(first_name)
+        self.enter_last_name(last_name)
+        self.enter_email(email)
+        self.enter_password(password)
