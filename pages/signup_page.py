@@ -8,6 +8,7 @@ last_name_field = (By.ID, "lastName")
 email_field = (By.ID, "email")
 password_field = (By.ID, "password")
 submit_button = (By.ID, "submit")
+validation_message_field = (By.ID, "error")
 
 class SignupPage(BasePage):
     """Signup Page class"""
@@ -62,3 +63,11 @@ class SignupPage(BasePage):
         self.enter_last_name(last_name)
         self.enter_email(email)
         self.enter_password(password)
+
+    def locate_validation_message(self):
+        """
+        Finds validation message on the page.
+        """
+        validation_message = self.find_element(validation_message_field)
+        text = validation_message.text
+        return text
