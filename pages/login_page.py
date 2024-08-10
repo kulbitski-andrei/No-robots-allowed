@@ -6,7 +6,8 @@ from pages.base_page import BasePage
 email_field = (By.ID, "email")
 password_field = (By.ID, "password")
 submit_button = (By.ID, "submit")
-
+signup_button = (By.ID, "signup")
+validation_message_field = (By.ID, "error")
 
 class LoginPage(BasePage):
     """Login Page class"""
@@ -45,3 +46,18 @@ class LoginPage(BasePage):
         self.enter_email(email)
         self.enter_password(password)
         self.click_submit()
+
+    def locate_validation_message(self):
+        """
+        Finds validation message on the page.
+        """
+        validation_message = self.find_element(validation_message_field)
+        text = validation_message.text
+        return text
+
+    def click_sign_up(self):
+        """
+        Click the sign up button to open sign up page.
+        """
+        signup_element = self.find_element(signup_button)
+        signup_element.click()
