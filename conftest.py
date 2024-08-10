@@ -23,7 +23,7 @@ def browser_sign_up_log_in():
     chrome_options.add_argument("--disable-search-engine-choice-screen")
     chrome_browser = webdriver.Chrome(options=chrome_options)
     chrome_browser.implicitly_wait(5)
-    chrome_browser.get(const.URL)
+    chrome_browser.get(const.URL_LANDING)
     yield chrome_browser
     chrome_browser.get(const.URL_CONTACTS)
     page_object = ContactListPage(chrome_browser)
@@ -43,7 +43,7 @@ def browser_contacts():
     chrome_options.add_argument("--disable-search-engine-choice-screen")
     chrome_browser = webdriver.Chrome(options=chrome_options)
     chrome_browser.implicitly_wait(5)
-    chrome_browser.get(const.URL)
+    chrome_browser.get(const.URL_LANDING)
     logger.debug("Fixture: Logging in")
     page_object = LoginPage(chrome_browser)
     page_object.complete_login(const.EMAIL, const.PASSWORD)

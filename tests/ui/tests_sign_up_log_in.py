@@ -20,7 +20,7 @@ def test_log_in_invalid_password(browser_sign_up_log_in):
     logger.info("TEST 1: Start execution")
     page_object = LoginPage(browser_sign_up_log_in)
     time.sleep(1)
-    page_object.complete_login("grenkee@random.com", "12345678")
+    page_object.complete_login(const.EMAIL, const.WRONG_PASSWORD)
     time.sleep(1)
     validation_message = page_object.locate_validation_message()
     time.sleep(1)
@@ -57,7 +57,10 @@ def test_sign_up_with_existing_email(browser_sign_up_log_in):
     page_object.click_sign_up()
     time.sleep(1)
     page_object = SignupPage(browser_sign_up_log_in)
-    page_object.complete_signup("Aaaaa", "Bbbbb", "hello.world@gmail.com", "12345678")
+    page_object.complete_signup(const.USER_FIRST_NAME,
+                                const.USER_LAST_NAME,
+                                const.EMAIL,
+                                const.WRONG_PASSWORD)
     time.sleep(1)
     validation_message = page_object.locate_validation_message()
     time.sleep(1)
@@ -77,7 +80,10 @@ def test_sign_up_with_invalid_email(browser_sign_up_log_in):
     page_object.click_sign_up()
     time.sleep(1)
     page_object = SignupPage(browser_sign_up_log_in)
-    page_object.complete_signup("Aaaaa", "Bbbbb", "helloworldgmailcom", "12345678")
+    page_object.complete_signup(const.USER_FIRST_NAME,
+                                const.USER_LAST_NAME,
+                                const.INVALID_EMAIL,
+                                const.WRONG_PASSWORD)
     time.sleep(1)
     validation_message = page_object.locate_validation_message()
     time.sleep(1)
@@ -109,3 +115,4 @@ def test_sign_up_empty_fields(browser_sign_up_log_in):
                                   "email: Email is invalid, "
                                   "password: Path `password` is required.")
     logger.info("TEST 5: Executed")
+
