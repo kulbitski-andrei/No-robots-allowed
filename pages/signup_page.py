@@ -10,6 +10,7 @@ password_field = (By.ID, "password")
 submit_button = (By.ID, "submit")
 validation_message_field = (By.ID, "error")
 
+
 class SignupPage(BasePage):
     """Signup Page class"""
 
