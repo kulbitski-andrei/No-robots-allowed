@@ -11,11 +11,13 @@ from pages.add_contact_page import AddContactPage
 import test_data.constants as const
 from logger.log_setup import logger
 
+
 @pytest.fixture
 def browser_sign_up_log_in():
     """
     Fixture to set up and tear down the browser instance for testing contacts.
-    At the start of each test log in is performed, new John Doe contact is created.
+    At the start of each test log in is performed,
+    new John Doe contact is created.
     At the start of each test created contact is deleted.
     """
     logger.info("Fixture: Setting up started")
@@ -35,7 +37,8 @@ def browser_sign_up_log_in():
 def browser_contacts():
     """
     Fixture to set up and tear down the browser instance for testing contacts.
-    At the start of each test log in is performed, new John Doe contact is created.
+    At the start of each test log in is performed,
+    new John Doe contact is created.
     At the start of each test created contact is deleted.
     """
     logger.info("Fixture: Setting up started")

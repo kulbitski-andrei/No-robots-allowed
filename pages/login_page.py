@@ -9,8 +9,10 @@ submit_button = (By.ID, "submit")
 signup_button = (By.ID, "signup")
 validation_message_field = (By.ID, "error")
 
+
 class LoginPage(BasePage):
     """Login Page class"""
+
     def __init__(self, driver):
         """
         Initialize the LoginPage with a web driver.

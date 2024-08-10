@@ -4,10 +4,7 @@ import time
 import pytest
 from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
-from pages.contact_list_page import ContactListPage
-from pages.contact_details_page import ContactDetailsPage
-from pages.edit_contact_page import EditContactPage
-from conftest import browser_sign_up_log_in
+# from conftest import browser_sign_up_log_in
 import test_data.constants as const
 from logger.log_setup import logger
 
@@ -89,7 +86,8 @@ def test_sign_up_with_invalid_email(browser_sign_up_log_in):
     time.sleep(1)
     logger.info("VALIDATION MESSAGE: %s", validation_message)
     time.sleep(1)
-    assert validation_message == "User validation failed: email: Email is invalid"
+    assert validation_message == ("User validation failed: email: "
+                                  "Email is invalid")
     logger.info("TEST 4: Executed")
 
 
@@ -115,4 +113,3 @@ def test_sign_up_empty_fields(browser_sign_up_log_in):
                                   "email: Email is invalid, "
                                   "password: Path `password` is required.")
     logger.info("TEST 5: Executed")
-
