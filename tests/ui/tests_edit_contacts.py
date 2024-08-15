@@ -42,9 +42,11 @@ def test_edit_contact(browser_contacts):
     assert current_page.find_element(first_name_field).text == "RICARDO"
     assert current_page.find_element(last_name_field).text == "DIAZ"
     assert current_page.find_element(birthdate_field).text == "1999-12-12"
-    assert current_page.find_element(email_address_field).text == "hello@world.com"
+    assert (current_page.find_element(email_address_field).text ==
+            "hello@world.com")
     assert current_page.find_element(phone_field).text == "0987654321"
-    assert current_page.find_element(street1_field).text == "BOULEVARD OF BROKEN DREAMS"
+    assert (current_page.find_element(street1_field).text ==
+            "BOULEVARD OF BROKEN DREAMS")
     assert current_page.find_element(street2_field).text == "80-180"
     assert current_page.find_element(city_field).text == "KYOTO"
     assert current_page.find_element(state_province_field).text == "HAMPSHIRE"
