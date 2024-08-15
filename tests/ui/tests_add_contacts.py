@@ -65,14 +65,15 @@ def test_create_new_contact_with_invalid_characters(browser_contacts):
     current_page = ContactListPage(browser_contacts)
     current_page.click_button(add_contact_button)
     current_page = AddContactPage(browser_contacts)
-    current_page.complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME,
-                                          const.INVALID_CHARACTERS_BIRTHDATE,
-                                          const.INVALID_CHARACTERS_EMAIL_ADDRESS,
-                                          const.INVALID_CHARACTERS_PHONE,
-                                          const.STREET1, const.STREET2, const.CITY,
-                                          const.STATE_PROVINCE,
-                                          const.INVALID_CHARACTERS_POSTAL_CODE,
-                                          const.COUNTRY)
+    (current_page.
+     complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME,
+                              const.INVALID_CHARACTERS_BIRTHDATE,
+                              const.INVALID_CHARACTERS_EMAIL_ADDRESS,
+                              const.INVALID_CHARACTERS_PHONE,
+                              const.STREET1, const.STREET2, const.CITY,
+                              const.STATE_PROVINCE,
+                              const.INVALID_CHARACTERS_POSTAL_CODE,
+                              const.COUNTRY))
     time.sleep(1)  # This one is really needed!
     validation_message = current_page.locate_validation_message()
     logger.info("VALIDATION MESSAGE: %s", validation_message)
