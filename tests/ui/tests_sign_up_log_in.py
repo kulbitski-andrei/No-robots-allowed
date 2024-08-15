@@ -54,9 +54,9 @@ def test_sign_up_with_existing_email(browser_sign_up_log_in):
     time.sleep(1)
     current_page = SignupPage(browser_sign_up_log_in)
     current_page.complete_signup(const.USER_FIRST_NAME,
-                                const.USER_LAST_NAME,
-                                const.EMAIL,
-                                const.WRONG_PASSWORD)
+                                 const.USER_LAST_NAME,
+                                 const.EMAIL,
+                                 const.WRONG_PASSWORD)
     time.sleep(1)
     validation_message = current_page.locate_validation_message()
     time.sleep(1)
@@ -77,9 +77,9 @@ def test_sign_up_with_invalid_email(browser_sign_up_log_in):
     time.sleep(1)
     current_page = SignupPage(browser_sign_up_log_in)
     current_page.complete_signup(const.USER_FIRST_NAME,
-                                const.USER_LAST_NAME,
-                                const.INVALID_EMAIL,
-                                const.WRONG_PASSWORD)
+                                 const.USER_LAST_NAME,
+                                 const.INVALID_EMAIL,
+                                 const.WRONG_PASSWORD)
     time.sleep(1)
     validation_message = current_page.locate_validation_message()
     time.sleep(1)

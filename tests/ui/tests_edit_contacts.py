@@ -27,16 +27,16 @@ def test_edit_contact(browser_contacts):
     current_page = EditContactPage(browser_contacts)
     time.sleep(1)  # This one is really needed!
     current_page.complete_edit_contact(const.EDIT_FIRST_NAME,
-                                      const.EDIT_LAST_NAME,
-                                      const.EDIT_BIRTHDATE,
-                                      const.EDIT_EMAIL_ADDRESS,
-                                      const.EDIT_PHONE,
-                                      const.EDIT_STREET1,
-                                      const.EDIT_STREET2,
-                                      const.EDIT_CITY,
-                                      const.EDIT_STATE_PROVINCE,
-                                      const.EDIT_POSTAL_CODE,
-                                      const.EDIT_COUNTRY)
+                                       const.EDIT_LAST_NAME,
+                                       const.EDIT_BIRTHDATE,
+                                       const.EDIT_EMAIL_ADDRESS,
+                                       const.EDIT_PHONE,
+                                       const.EDIT_STREET1,
+                                       const.EDIT_STREET2,
+                                       const.EDIT_CITY,
+                                       const.EDIT_STATE_PROVINCE,
+                                       const.EDIT_POSTAL_CODE,
+                                       const.EDIT_COUNTRY)
     current_page = ContactDetailsPage(browser_contacts)
     time.sleep(1)  # This one is really needed!
     assert current_page.find_element(first_name_field).text == "RICARDO"
