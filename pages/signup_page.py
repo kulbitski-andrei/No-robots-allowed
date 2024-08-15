@@ -48,23 +48,16 @@ class SignupPage(BasePage):
         password_input = self.find_element(password_field)
         password_input.send_keys(password)
 
-    def click_submit(self):
-        """
-        Click the submit button to log in.
-        """
-        submit_element = self.find_element(submit_button)
-        submit_element.click()
-
     def complete_signup(self, first_name, last_name, email, password):
         """
         Complete the sign up process by entering the name,
         email and password and submitting the form.
         """
-        self.enter_first_name(first_name)
-        self.enter_last_name(last_name)
-        self.enter_email(email)
-        self.enter_password(password)
-        self.click_submit()
+        self.enter_text(first_name, first_name_field)
+        self.enter_text(last_name, last_name_field)
+        self.enter_text(email, email_field)
+        self.enter_text(password, password_field)
+        self.click_button(submit_button)
 
     def locate_validation_message(self):
         """

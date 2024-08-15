@@ -27,82 +27,15 @@ class ContactDetailsPage(BasePage):
         """
         super().__init__(driver)
 
-    def click_edit_contact(self):
-        """
-        Click the edit button to edit the contact details.
-        """
-        edit_contact_element = self.find_element(edit_button)
-        edit_contact_element.click()
-
-    def click_delete_contact(self):
-        """
-        Click the delete button to delete the contact.
-        """
-        delete_contact_element = self.find_element(delete_button)
-        delete_contact_element.click()
-
-    def locate_first_name(self):
-        """
-        Locate the first name field.
-        """
-        return self.find_element(first_name_field)
-
-    def locate_last_name(self):
-        """
-        Locate the last name field.
-        """
-        return self.find_element(last_name_field)
-
-    def locate_birthdate(self):
-        """
-        Locate the birthdate field.
-        """
-        return self.find_element(birthdate_field)
-
-    def locate_email_address(self):
-        """
-        Locate the email address field.
-        """
-        return self.find_element(email_address_field)
-
-    def locate_phone(self):
-        """
-        Locate the phone field.
-        """
-        return self.find_element(phone_field)
-
-    def locate_street1(self):
-        """
-        Locate the first line of the street address field.
-        """
-        return self.find_element(street1_field)
-
-    def locate_street2(self):
-        """
-        Locate the second line of the street address field.
-        """
-        return self.find_element(street2_field)
-
-    def locate_city(self):
-        """
-        Locate the city field.
-        """
-        return self.find_element(city_field)
-
-    def locate_state_province(self):
-        """
-        Locate the state or province field.
-        """
-        return self.find_element(state_province_field)
-
-    def locate_postal_code(self):
-        """
-        Locate the postal code field.
-        """
-        return self.find_element(postal_code_field)
-
-    def locate_country(self):
-        """
-        Locate the country field.
-        """
-        return self.find_element(country_field)
+    # def click_edit_contact(self):
+    #     """
+    #     Click the edit button to edit the contact details.
+    #     """
+    #     edit_contact_element = self.find_element(edit_button)
+    #     edit_contact_element.click()
+    #
+    # def click_delete_contact(self, delete_button):
+    #     """
+    #     Click the delete button to delete the contact.
+    #     """
+    #     self.click_button(delete_button)

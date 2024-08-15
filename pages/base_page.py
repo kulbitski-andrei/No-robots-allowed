@@ -15,6 +15,20 @@ class BasePage:
         """
         self.driver.get(url)
 
+    def enter_text(self, text, field):
+        """
+        Enter the text into the field.
+        """
+        input_var = self.find_element(field)
+        input_var.send_keys(text)
+
+    def click_button(self, button):
+        """
+        Click the submit button to submit the form.
+        """
+        button_var = self.find_element(button)
+        button_var.click()
+
     def find_element(self, selector):
         """
         Find a web element using the given selector.
