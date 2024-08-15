@@ -30,6 +30,10 @@ def test_create_new_contact(browser_contacts):
 
 @pytest.mark.create_new_contact_without_mandatory_fields
 def test_create_new_contact_without_mandatory_fields(browser_contacts):
+    """
+    Test the creation of a new contact
+    without entering data in mandatory fields.
+    """
     logger.info("TEST 2: Start execution")
     current_page = ContactListPage(browser_contacts)
     current_page.click_button(add_contact_button)
@@ -52,6 +56,11 @@ def test_create_new_contact_without_mandatory_fields(browser_contacts):
 
 @pytest.mark.create_new_contact_with_invalid_characters
 def test_create_new_contact_with_invalid_characters(browser_contacts):
+    """
+    Test the creation of a new contact
+    with entering invalid type of characters
+    to fields that do not such characters
+    """
     logger.info("TEST 3: Start execution")
     current_page = ContactListPage(browser_contacts)
     current_page.click_button(add_contact_button)
@@ -78,6 +87,11 @@ def test_create_new_contact_with_invalid_characters(browser_contacts):
 
 @pytest.mark.create_new_contact_max_amount_of_characters_exceeded
 def test_create_new_contact_max_amount_of_characters_exceeded(browser_contacts):
+    """
+    Test the creation of a new contact
+    with exceeding the maximum amount of charcters
+    in the text fields
+    """
     logger.info("TEST 4: Start execution")
     current_page = ContactListPage(browser_contacts)
     current_page.click_button(add_contact_button)
