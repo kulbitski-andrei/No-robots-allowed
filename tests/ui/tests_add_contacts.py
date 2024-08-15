@@ -82,7 +82,7 @@ def test_create_new_contact_with_invalid_characters(browser_contacts):
                                   "email: Email is invalid, "
                                   "phone: Phone number is invalid, "
                                   "postalCode: Postal code is invalid")
-    time.sleep(10)
+    time.sleep(5)
     logger.info("TEST 3: Executed")
 
 
@@ -99,21 +99,38 @@ def test_create_new_contact_max_amount_of_characters_exceeded(
     current_page.click_button(add_contact_button)
     current_page = AddContactPage(browser_contacts)
     (current_page.
-     complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME,
-                              const.INVALID_CHARACTERS_BIRTHDATE,
-                              const.INVALID_CHARACTERS_EMAIL_ADDRESS,
-                              const.INVALID_CHARACTERS_PHONE,
-                              const.STREET1, const.STREET2,
-                              const.CITY, const.STATE_PROVINCE,
-                              const.INVALID_CHARACTERS_POSTAL_CODE,
-                              const.COUNTRY))
+     complete_add_new_contact(const.LONG_FIRST_NAME, const.LONG_LAST_NAME,
+                              const.BIRTHDATE, const.EMAIL_ADDRESS,
+                              const.LONG_PHONE,
+                              const.LONG_STREET1, const.LONG_STREET2,
+                              const.LONG_CITY, const.LONG_STATE_PROVINCE,
+                              const.LONG_POSTAL_CODE, const.LONG_COUNTRY))
     time.sleep(1)  # This one is really needed!
     validation_message = current_page.locate_validation_message()
     logger.info("VALIDATION MESSAGE: %s", validation_message)
-    assert validation_message == ("Contact validation failed: "
-                                  "birthdate: Birthdate is invalid, "
-                                  "email: Email is invalid, "
-                                  "phone: Phone number is invalid, "
-                                  "postalCode: Postal code is invalid")
-    time.sleep(10)
+    assert (validation_message ==
+            ("Contact validation failed: "
+             "firstName: Path `firstName` (`Abcdefghijklmnopqrstu`) "
+             "is longer than the maximum allowed length (20)., "
+             "lastName: Path `lastName` (`Abcdefghijklmnopqrstu`) "
+             "is longer than the maximum allowed length (20)., "
+             "phone: Path `phone` (`1234567890123456`) "
+             "is longer than the maximum allowed length (15)., "
+             "street1: Path `street1` "
+             "(`AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno`) "
+             "is longer than the maximum allowed length (40)., "
+             "street2: Path `street2` "
+             "(`AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno`) "
+             "is longer than the maximum allowed length (40)., "
+             "city: Path `city` "
+             "(`AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno`) "
+             "is longer than the maximum allowed length (40)., "
+             "stateProvince: Path `stateProvince` (`Abcdefghijklmnopqrstu`) "
+             "is longer than the maximum allowed length (20)., "
+             "postalCode: Path `postalCode` (`12345678901`) "
+             "is longer than the maximum allowed length (10)., "
+             "country: Path `country` "
+             "(`AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno`) "
+             "is longer than the maximum allowed length (40)."))
+    time.sleep(5)
     logger.info("TEST 4: Executed")

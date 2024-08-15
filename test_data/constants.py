@@ -47,13 +47,12 @@ INVALID_CHARACTERS_PHONE = "non-digit"
 INVALID_CHARACTERS_POSTAL_CODE = "non-digit"
 
 # TOO LONG ENTRIES IN CONTACT DATA
-LONG_FIRST_NAME = "Abcdefghijklmnopqrstu"
-LONG_LAST_NAME = "Abcdefghijklmnopqrstu"
-LONG_BIRTHDATE = "2000-01-01"
-LONG_PHONE = "1234567890123456789012345678901234567890"
-LONG_STREET1 = "123 Main St"
-LONG_STREET2 = "Apt 4B"
-LONG_CITY = "Springfield"
-LONG_STATE_PROVINCE = "IL"
-LONG_POSTAL_CODE = "62704"
-LONG_COUNTRY = "USA"
+LONG_FIRST_NAME = "Abcdefghijklmnopqrstu"  # 21/20
+LONG_LAST_NAME = "Abcdefghijklmnopqrstu"  # 21/20
+LONG_PHONE = "1234567890123456"  # 15/16
+LONG_STREET1 = "AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno"  # 41/40
+LONG_STREET2 = "AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno"  # 41/40
+LONG_CITY = "AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno"  # 41/40
+LONG_STATE_PROVINCE = "Abcdefghijklmnopqrstu"  # 21/20
+LONG_POSTAL_CODE = "12345678901"  # 11/10
+LONG_COUNTRY = "AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno"  # 41/40
