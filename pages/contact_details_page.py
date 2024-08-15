@@ -17,25 +17,22 @@ city_field = (By.ID, "city")
 state_province_field = (By.ID, "stateProvince")
 postal_code_field = (By.ID, "postalCode")
 country_field = (By.ID, "country")
+validation_message_field = (By.ID, "error")
 
 
 class ContactDetailsPage(BasePage):
     """Contact Details Page class"""
+
     def __init__(self, driver):
         """
         Initialize the ContactDetailsPage with a web driver.
         """
         super().__init__(driver)
 
-    # def click_edit_contact(self):
-    #     """
-    #     Click the edit button to edit the contact details.
-    #     """
-    #     edit_contact_element = self.find_element(edit_button)
-    #     edit_contact_element.click()
-    #
-    # def click_delete_contact(self, delete_button):
-    #     """
-    #     Click the delete button to delete the contact.
-    #     """
-    #     self.click_button(delete_button)
+    def locate_validation_message(self):
+        """
+        Finds validation message on the page.
+        """
+        validation_message = self.find_element(validation_message_field)
+        text = validation_message.text
+        return text

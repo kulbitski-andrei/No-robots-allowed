@@ -59,7 +59,7 @@ def test_create_new_contact_with_invalid_characters(browser_contacts):
     """
     Test the creation of a new contact
     with entering invalid type of characters
-    to fields that do not such characters
+    to fields that do not accepts such characters
     """
     logger.info("TEST 3: Start execution")
     current_page = ContactListPage(browser_contacts)
