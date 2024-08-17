@@ -39,14 +39,20 @@ def test_get_user_profile(auth_token_and_user_data):
     profile_data = response.json()
 
     # Check that the profile data contains the expected keys
-    assert "email" in profile_data, "Expected 'email' in the profile data"
-    assert "firstName" in profile_data, "Expected 'firstName' in the profile data"
-    assert "lastName" in profile_data, "Expected 'lastName' in the profile data"
-    assert "_id" in profile_data, "Expected '_id' in the profile data"
+    assert "email" in profile_data, \
+        "Expected 'email' in the profile data"
+    assert "firstName" in profile_data, \
+        "Expected 'firstName' in the profile data"
+    assert "lastName" in profile_data, \
+        "Expected 'lastName' in the profile data"
+    assert "_id" in profile_data, \
+        "Expected '_id' in the profile data"
 
-    # Verify that the email in the profile matches what was used for registration
-    assert profile_data["email"] == user_data["email"], ("The email in the profile "
-                                                         "does not match the registered email")
+    # Verify that the email in the profile matches
+    # what was used for registration
+    assert profile_data["email"] == user_data["email"], \
+        ("The email in the profile "
+         "does not match the registered email")
 
 
 def test_get_user_profile_invalid_token():

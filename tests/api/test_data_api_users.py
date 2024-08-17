@@ -1,3 +1,5 @@
+"""Test data for API Users tests"""
+
 import uuid
 
 BASE_URL = "https://thinking-tester-contact-list.herokuapp.com"

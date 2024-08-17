@@ -12,16 +12,20 @@ def auth_token_and_user_data():
     user_data = UserData.generate_user_data()
 
     # Регистрация пользователя
-    response = requests.post(f"{BASE_URL}/users", json=user_data, headers=HEADERS)
-    assert response.status_code == 201, f"Expected status 201, but got {response.status_code}"
+    response = requests.post(f"{BASE_URL}/users",
+                             json=user_data, headers=HEADERS)
+    assert response.status_code == 201, (f"Expected status 201, "
+                                         f"but got {response.status_code}")
 
     # Логин пользователя
     login_data = {
         "email": user_data["email"],
         "password": user_data["password"]
     }
-    login_response = requests.post(f"{BASE_URL}/users/login", json=login_data, headers=HEADERS)
-    assert login_response.status_code == 200, f"Expected status 200, but got {login_response.status_code}"
+    login_response = requests.post(f"{BASE_URL}/users/login",
+                                   json=login_data, headers=HEADERS)
+    assert login_response.status_code == 200, (f"Expected status 200, "
+                                               f"but got {login_response.status_code}")
 
     response_data = login_response.json()
     return {
@@ -38,10 +42,13 @@ def test_logout_user(auth_token_and_user_data):
         "Authorization": f"Bearer {token}"
     }
 
-    response = requests.post(f"{BASE_URL}/users/logout", headers=headers)
+    response = requests.post(f"{BASE_URL}/users/logout",
+                             headers=headers)
 
-    assert response.status_code == 200, f"Expected status 200, but got {response.status_code}"
-    assert response.text == "", "Expected empty response body for successful logout"
+    assert response.status_code == 200, (f"Expected status 200, "
+                                         f"but got {response.status_code}")
+    assert response.text == "", ("Expected empty response body "
+                                 "for successful logout")
 
 
 def test_logout_user_invalid_token():
@@ -53,9 +60,12 @@ def test_logout_user_invalid_token():
 
     response = requests.post(f"{BASE_URL}/users/logout", headers=headers)
 
-    assert response.status_code == 401, f"Expected status 401, but got {response.status_code}"
+    assert response.status_code == 401, (f"Expected status 401, "
+                                         f"but got {response.status_code}")
     response_data = response.json()
-    assert response_data.get("error") == "Please authenticate.", f"Expected error message 'Please authenticate.', but got {response_data.get('error')}"
+    assert response_data.get("error") == "Please authenticate.", \
+        (f"Expected error message 'Please authenticate.', "
+         f"but got {response_data.get('error')}")
 
 
 def test_logout_user_twice(auth_token_and_user_data):
@@ -79,4 +89,5 @@ def test_logout_user_twice(auth_token_and_user_data):
                                           f"but got {response2.status_code}")
     response_data = response2.json()
     assert response_data.get("error") == "Please authenticate.", \
-        f"Expected error message 'Please authenticate.', but got {response_data.get('error')}"
+        (f"Expected error message 'Please authenticate.', "
+         f"but got {response_data.get('error')}")

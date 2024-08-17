@@ -86,7 +86,8 @@ def test_update_user_profile_existing_email(auth_token_and_user_data):
         "Expected MongoError in the response data"
     assert "code" in response_data and response_data["code"] == 11000, \
         "Expected error code 11000 for unique index violation"
-    assert ("keyValue" in response_data and response_data["keyValue"].get("email") ==
+    assert ("keyValue" in response_data and
+            response_data["keyValue"].get("email") ==
             existing_email), "Expected existing email in the error details"
 
 
@@ -111,15 +112,18 @@ def test_update_user_profile_malformed_email(auth_token_and_user_data):
     print("Response Data from Update Attempt:", response_data)  # For debugging
 
     # Check for validation error messages
-    assert "_message" in response_data, "Expected '_message' in the response data"
+    assert "_message" in response_data, \
+        "Expected '_message' in the response data"
     assert response_data["_message"] == "User validation failed", \
         "Unexpected '_message' value"
 
     assert "errors" in response_data, "Expected 'errors' in the response data"
-    assert "email" in response_data["errors"], "Expected 'email' key in 'errors'"
+    assert "email" in response_data["errors"], \
+        "Expected 'email' key in 'errors'"
     assert response_data["errors"]["email"]["message"] == "Email is invalid", \
         "Unexpected error message for 'email'"
-    assert response_data["errors"]["email"]["value"] == "invalid-email-format", \
+    assert (response_data["errors"]["email"]["value"] ==
+            "invalid-email-format"), \
         "Unexpected value for 'email' error"
 
 
@@ -152,8 +156,8 @@ def test_update_user_profile_weak_password(auth_token_and_user_data):
 
     assert "errors" in response_data, ("Expected 'errors' "
                                        "in the response data")
-    assert "password" in response_data["errors"], ("Expected "
-                                                   "'password' key in 'errors'")
+    assert "password" in response_data["errors"], \
+        "Expected 'password' key in 'errors'"
     assert (response_data["errors"]["password"]["message"] ==
             ("Path `password` (`short`) is shorter than the minimum "
              "allowed length (7).")), "Unexpected error message for 'password'"

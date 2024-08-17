@@ -12,7 +12,8 @@ def auth_token_and_user_data():
     # Generate user data using UserData
     user_data = UserData.generate_user_data()
 
-    response = requests.post(f"{BASE_URL}/users", json=user_data, headers=HEADERS)
+    response = requests.post(f"{BASE_URL}/users",
+                             json=user_data, headers=HEADERS)
     assert response.status_code == 201, \
         f"Expected status 201, but got {response.status_code}"
 
@@ -39,8 +40,10 @@ def test_login_user_success(auth_token_and_user_data):
                                          f"but got {response.status_code}")
     response_data = response.json()
 
-    assert "token" in response_data, "Expected 'token' in the response data"
-    assert response_data["token"] is not None, "Expected 'token' to be not None"
+    assert "token" in response_data, \
+        "Expected 'token' in the response data"
+    assert response_data["token"] is not None, \
+        "Expected 'token' to be not None"
 
 
 def test_login_user_incorrect_password(auth_token_and_user_data):

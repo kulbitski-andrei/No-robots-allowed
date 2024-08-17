@@ -80,7 +80,8 @@ def test_add_user_short_password():
     user_data = UserData.generate_user_data()
     user_data["password"] = "short"  # Set a password that is too short
 
-    response = requests.post(f"{BASE_URL}/users", json=user_data, headers=HEADERS)
+    response = requests.post(f"{BASE_URL}/users",
+                             json=user_data, headers=HEADERS)
     assert response.status_code == 400, (f"Expected status 400, "
                                          f"but got {response.status_code}")
 
