@@ -1,3 +1,6 @@
+"""API test Logout user"""
+
+
 import pytest
 import requests
 from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
@@ -64,11 +67,16 @@ def test_logout_user_twice(auth_token_and_user_data):
 
     # Первый выход
     response1 = requests.post(f"{BASE_URL}/users/logout", headers=headers)
-    assert response1.status_code == 200, f"Expected status 200, but got {response1.status_code}"
-    assert response1.text == "", "Expected empty response body for successful logout"
+    assert response1.status_code == 200, (f"Expected status 200, "
+                                          f"but got {response1.status_code}")
+    assert response1.text == "", ("Expected empty response body "
+                                  "for successful logout")
 
     # Попытка выхода снова с тем же токеном
-    response2 = requests.post(f"{BASE_URL}/users/logout", headers=headers)
-    assert response2.status_code == 401, f"Expected status 401, but got {response2.status_code}"
+    response2 = requests.post(f"{BASE_URL}/users/logout",
+                              headers=headers)
+    assert response2.status_code == 401, (f"Expected status 401, "
+                                          f"but got {response2.status_code}")
     response_data = response2.json()
-    assert response_data.get("error") == "Please authenticate.", f"Expected error message 'Please authenticate.', but got {response_data.get('error')}"
+    assert response_data.get("error") == "Please authenticate.", \
+        f"Expected error message 'Please authenticate.', but got {response_data.get('error')}"

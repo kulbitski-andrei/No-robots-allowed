@@ -1,3 +1,6 @@
+"""API test Delete user"""
+
+
 import pytest
 import requests
 from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
@@ -6,19 +9,23 @@ from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 @pytest.fixture
 def auth_token_and_user_data():
     """Fixture to register a user and obtain an auth token."""
-    user_data = UserData.generate_user_data()  # Получение данных пользователя из UserData
+    user_data = UserData.generate_user_data()
 
     # Регистрация нового пользователя
-    response = requests.post(f"{BASE_URL}/users", json=user_data, headers=HEADERS)
-    assert response.status_code == 201, f"Expected status 201, but got {response.status_code}"
+    response = requests.post(f"{BASE_URL}/users",
+                             json=user_data, headers=HEADERS)
+    assert response.status_code == 201, (f"Expected status 201, "
+                                         f"but got {response.status_code}")
 
     # Логин с зарегистрированным пользователем
     login_data = {
         "email": user_data["email"],
         "password": user_data["password"]
     }
-    login_response = requests.post(f"{BASE_URL}/users/login", json=login_data, headers=HEADERS)
-    assert login_response.status_code == 200, f"Expected status 200, but got {login_response.status_code}"
+    login_response = requests.post(f"{BASE_URL}/users/login",
+                                   json=login_data, headers=HEADERS)
+    assert login_response.status_code == 200, (f"Expected status 200, "
+                                               f"but got {login_response.status_code}")
 
     response_data = login_response.json()
     return {
@@ -36,8 +43,10 @@ def test_delete_user(auth_token_and_user_data):
 
     response = requests.delete(f"{BASE_URL}/users/me", headers=headers)
 
-    assert response.status_code == 200, f"Expected status 200, but got {response.status_code}"
-    assert response.text == "", "Expected empty response body for successful delete"
+    assert response.status_code == 200, (f"Expected status 200, "
+                                         f"but got {response.status_code}")
+    assert response.text == "", ("Expected empty response body "
+                                 "for successful delete")
 
 
 def test_delete_user_invalid_token():
@@ -49,9 +58,12 @@ def test_delete_user_invalid_token():
 
     response = requests.delete(f"{BASE_URL}/users/me", headers=headers)
 
-    assert response.status_code == 401, f"Expected status 401, but got {response.status_code}"
+    assert response.status_code == 401, (f"Expected status 401, "
+                                         f"but got {response.status_code}")
     response_data = response.json()
-    assert response_data.get("error") == "Please authenticate.", f"Expected error message 'Please authenticate.', but got {response_data.get('error')}"
+    assert response_data.get("error") == "Please authenticate.", \
+        (f"Expected error message 'Please authenticate.', "
+         f"but got {response_data.get('error')}")
 
 
 def test_delete_user_twice(auth_token_and_user_data):
@@ -63,14 +75,19 @@ def test_delete_user_twice(auth_token_and_user_data):
 
     # Первый запрос на удаление
     response1 = requests.delete(f"{BASE_URL}/users/me", headers=headers)
-    assert response1.status_code == 200, f"Expected status 200, but got {response1.status_code}"
-    assert response1.text == "", "Expected empty response body for successful delete"
+    assert response1.status_code == 200, (f"Expected status 200, "
+                                          f"but got {response1.status_code}")
+    assert response1.text == "", ("Expected empty response body "
+                                  "for successful delete")
 
     # Попытка удалить снова
     response2 = requests.delete(f"{BASE_URL}/users/me", headers=headers)
-    assert response2.status_code == 401, f"Expected status 401, but got {response2.status_code}"
+    assert response2.status_code == 401, (f"Expected status 401, "
+                                          f"but got {response2.status_code}")
     response_data = response2.json()
-    assert response_data.get("error") == "Please authenticate.", f"Expected error message 'Please authenticate.', but got {response_data.get('error')}"
+    assert response_data.get("error") == "Please authenticate.", \
+        (f"Expected error message 'Please authenticate.', "
+         f"but got {response_data.get('error')}")
 
 
 def test_delete_user_non_existent(auth_token_and_user_data):
@@ -83,5 +100,7 @@ def test_delete_user_non_existent(auth_token_and_user_data):
 
     response = requests.delete(f"{BASE_URL}/users/me", headers=headers)
 
-    assert response.status_code == 401, f"Expected status 401, but got {response.status_code}"
-    assert response.text == '{"error":"Please authenticate."}', "Expected error message for unauthorized access"
+    assert response.status_code == 401, (f"Expected status 401, "
+                                         f"but got {response.status_code}")
+    assert response.text == '{"error":"Please authenticate."}', \
+        "Expected error message for unauthorized access"

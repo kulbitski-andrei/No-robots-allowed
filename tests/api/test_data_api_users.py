@@ -8,6 +8,7 @@ HEADERS = {
 
 
 class UserData:
+    """Class for random user data generation"""
     @staticmethod
     def generate_user_data():
         """Generate user data for registration."""
