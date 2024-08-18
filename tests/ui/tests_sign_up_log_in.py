@@ -2,7 +2,7 @@
 
 import time
 import pytest
-from pages.login_page import LoginPage
+from pages.login_page import LoginPage, submit_button, signup_button
 from pages.signup_page import SignupPage
 import test_data.constants as const
 from logger.log_setup import logger
@@ -14,11 +14,11 @@ def test_log_in_invalid_password(browser_sign_up_log_in):
     Test the attempt to log in with valid email and invalid password.
     """
     logger.info("TEST 1: Start execution")
-    page_object = LoginPage(browser_sign_up_log_in)
+    current_page = LoginPage(browser_sign_up_log_in)
     time.sleep(1)
-    page_object.complete_login(const.EMAIL, const.WRONG_PASSWORD)
+    current_page.complete_login(const.EMAIL, const.WRONG_PASSWORD)
     time.sleep(1)
-    validation_message = page_object.locate_validation_message()
+    validation_message = current_page.locate_validation_message()
     time.sleep(1)
     logger.info("VALIDATION MESSAGE: %s", validation_message)
     assert validation_message == "Incorrect username or password"
@@ -32,11 +32,11 @@ def test_log_in_empty_fields(browser_sign_up_log_in):
     Test the attempt to log in with empty email and password fields.
     """
     logger.info("TEST 2: Start execution")
-    page_object = LoginPage(browser_sign_up_log_in)
+    current_page = LoginPage(browser_sign_up_log_in)
     time.sleep(2)
-    page_object.click_submit()
+    current_page.click_button(submit_button)
     time.sleep(1)
-    validation_message = page_object.locate_validation_message()
+    validation_message = current_page.locate_validation_message()
     time.sleep(1)
     logger.info("VALIDATION MESSAGE: %s", validation_message)
     assert validation_message == "Incorrect username or password"
@@ -49,16 +49,16 @@ def test_sign_up_with_existing_email(browser_sign_up_log_in):
     Test the attempt to log in with existing email.
     """
     logger.info("TEST 3: Start execution")
-    page_object = LoginPage(browser_sign_up_log_in)
-    page_object.click_sign_up()
+    current_page = LoginPage(browser_sign_up_log_in)
+    current_page.click_button(signup_button)
     time.sleep(1)
-    page_object = SignupPage(browser_sign_up_log_in)
-    page_object.complete_signup(const.USER_FIRST_NAME,
-                                const.USER_LAST_NAME,
-                                const.EMAIL,
-                                const.WRONG_PASSWORD)
+    current_page = SignupPage(browser_sign_up_log_in)
+    current_page.complete_signup(const.USER_FIRST_NAME,
+                                 const.USER_LAST_NAME,
+                                 const.EMAIL,
+                                 const.WRONG_PASSWORD)
     time.sleep(1)
-    validation_message = page_object.locate_validation_message()
+    validation_message = current_page.locate_validation_message()
     time.sleep(1)
     logger.info("VALIDATION MESSAGE: %s", validation_message)
     time.sleep(1)
@@ -72,16 +72,16 @@ def test_sign_up_with_invalid_email(browser_sign_up_log_in):
     Test the attempt to log in with invalid email.
     """
     logger.info("TEST 4: Start execution")
-    page_object = LoginPage(browser_sign_up_log_in)
-    page_object.click_sign_up()
+    current_page = LoginPage(browser_sign_up_log_in)
+    current_page.click_button(signup_button)
     time.sleep(1)
-    page_object = SignupPage(browser_sign_up_log_in)
-    page_object.complete_signup(const.USER_FIRST_NAME,
-                                const.USER_LAST_NAME,
-                                const.INVALID_EMAIL,
-                                const.WRONG_PASSWORD)
+    current_page = SignupPage(browser_sign_up_log_in)
+    current_page.complete_signup(const.USER_FIRST_NAME,
+                                 const.USER_LAST_NAME,
+                                 const.INVALID_EMAIL,
+                                 const.WRONG_PASSWORD)
     time.sleep(1)
-    validation_message = page_object.locate_validation_message()
+    validation_message = current_page.locate_validation_message()
     time.sleep(1)
     logger.info("VALIDATION MESSAGE: %s", validation_message)
     time.sleep(1)
@@ -96,14 +96,14 @@ def test_sign_up_empty_fields(browser_sign_up_log_in):
     Test the attempt to sign up with empty form.
     """
     logger.info("TEST 5: Start execution")
-    page_object = LoginPage(browser_sign_up_log_in)
-    page_object.click_sign_up()
+    current_page = LoginPage(browser_sign_up_log_in)
+    current_page.click_button(signup_button)
     time.sleep(1)
-    page_object = SignupPage(browser_sign_up_log_in)
+    current_page = SignupPage(browser_sign_up_log_in)
     time.sleep(1)
-    page_object.click_submit()
+    current_page.click_button(submit_button)
     time.sleep(1)  # This one is really needed!
-    validation_message = page_object.locate_validation_message()
+    validation_message = current_page.locate_validation_message()
     time.sleep(1)
     logger.info("VALIDATION MESSAGE: %s", validation_message)
     assert validation_message == ("User validation failed: "
