@@ -1,2 +1,2 @@
 [good-names]
-disable = invalid-name, too-few-public-methods, eval-used, no-member, duplicate-code, redefined-outer-name, too-many-arguments, ungrouped-imports, useless-parent-delegation, unused-argument, unused-variable
+disable = invalid-name, too-few-public-methods, eval-used, no-member, duplicate-code, redefined-outer-name, too-many-arguments, ungrouped-imports, useless-parent-delegation, unused-argument, unused-variable, import-error

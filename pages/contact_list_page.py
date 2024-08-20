@@ -7,6 +7,7 @@ add_contact_button = (By.ID, "add-contact")
 logout_button = (By.ID, "logout")
 contact_row = (By.XPATH, "//tr[@class=\"contactTableBodyRow\"][1]")
 contact_row_list = (By.XPATH, "//tr[@class=\"contactTableBodyRow\"]")
+page_header_field = (By.TAG_NAME, "h1")
 
 
 class ContactListPage(BasePage):
@@ -44,6 +45,13 @@ class ContactListPage(BasePage):
         """
         list_of_rows = self.find_elements(*contact_row_list)
         return list_of_rows
+
+    def locate_page_header_title(self):
+        """
+        Locate page header.
+        """
+        page_header_title = self.find_element(page_header_field)
+        return page_header_title
 
     def logout(self):
         """

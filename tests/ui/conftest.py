@@ -1,11 +1,9 @@
 """PYTEST FIXTURE STORAGE"""
 
 import time
-
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
 import test_data.constants as const
 from logger.log_setup import logger
 from pages.contact_details_page import ContactDetailsPage, delete_button
@@ -16,7 +14,7 @@ from pages.login_page import LoginPage
 @pytest.fixture
 def general_fixture():
     """
-    General fixture:
+    General fixture.
     Set up: Login.
     Tear down: Logout.
     """
@@ -33,6 +31,7 @@ def general_fixture():
     current_page = ContactListPage(chrome_browser)
     current_page.click_button(logout_button)
     chrome_browser.quit()
+    print("")
 
 
 @pytest.fixture
