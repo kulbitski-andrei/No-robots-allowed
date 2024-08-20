@@ -8,7 +8,8 @@ import test_data.constants as const
 from logger.log_setup import logger
 
 
-@pytest.mark.create_new_contact
+@pytest.mark.priority_high
+@pytest.mark.add_contact
 def test_create_new_contact(browser_contacts):
     """
     Test the creation of a new contact.
@@ -28,7 +29,8 @@ def test_create_new_contact(browser_contacts):
     logger.info("TEST 1: Executed")
 
 
-@pytest.mark.create_new_contact_without_mandatory_fields
+@pytest.mark.priority_high
+@pytest.mark.add_contact
 def test_create_new_contact_without_mandatory_fields(browser_contacts):
     """
     Test the creation of a new contact
@@ -54,7 +56,8 @@ def test_create_new_contact_without_mandatory_fields(browser_contacts):
     logger.info("TEST 2: Executed")
 
 
-@pytest.mark.create_new_contact_with_invalid_characters
+@pytest.mark.priority_medium
+@pytest.mark.add_contact
 def test_create_new_contact_with_invalid_characters(browser_contacts):
     """
     Test the creation of a new contact
@@ -86,7 +89,8 @@ def test_create_new_contact_with_invalid_characters(browser_contacts):
     logger.info("TEST 3: Executed")
 
 
-@pytest.mark.create_new_contact_max_amount_of_characters_exceeded
+@pytest.mark.priority_medium
+@pytest.mark.add_contact
 def test_create_new_contact_max_amount_of_characters_exceeded(
         browser_contacts):
     """

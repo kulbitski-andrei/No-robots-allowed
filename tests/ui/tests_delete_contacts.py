@@ -6,6 +6,7 @@ from pages.contact_details_page import ContactDetailsPage, delete_button
 from logger.log_setup import logger
 
 
+@pytest.mark.priority_high
 @pytest.mark.delete_contact
 def test_delete_contact(browser_contacts):
     """
