@@ -84,7 +84,8 @@ def test_full_update_contact(valid_token, update_data, create_contact):
         "Country did not update correctly"
 
 
-def test_full_update_contact_without_auth(valid_token, update_data, create_contact):
+def test_full_update_contact_without_auth(valid_token,
+                                          update_data, create_contact):
     """Update contact without auth"""
     headers = {
         "Content-Type": "application/json"
@@ -96,7 +97,8 @@ def test_full_update_contact_without_auth(valid_token, update_data, create_conta
                                          f"but got {response.status_code}")
 
 
-def test_full_update_contact_with_invalid_field(valid_token, update_data, create_contact):
+def test_full_update_contact_with_invalid_field(valid_token,
+                                                update_data, create_contact):
     """Update contact without invalid field"""
     update_data["email"] = "failed_emai@sss"
     headers = {
@@ -110,7 +112,8 @@ def test_full_update_contact_with_invalid_field(valid_token, update_data, create
                                          f"but got {response.status_code}")
 
 
-def test_full_update_contact_with_empty_field(valid_token, update_data, create_contact):
+def test_full_update_contact_with_empty_field(valid_token,
+                                              update_data, create_contact):
     """Update contact with empty field"""
     update_data["phone"] = ""
     headers = {
