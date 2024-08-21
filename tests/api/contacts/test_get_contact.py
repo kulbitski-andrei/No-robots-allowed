@@ -8,20 +8,36 @@ from test_data.constants import VALID_TOKEN
 
 
 @pytest.fixture
+def create_contact(valid_token):
+    """Create contact"""
+    headers = {
+        "Authorization": f"Bearer {valid_token}",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json={"firstName": "John",
+                                                    "lastName": "Doe"})
+    response = response.json()
+    contact_id = response["_id"]
+    return contact_id
+
+
+@pytest.fixture
 def valid_token():
     """Getting a valid token"""
     valid_token = VALID_TOKEN
     return valid_token
 
 
-def test_get_contact(valid_token):
+def test_get_contact(valid_token, create_contact):
     """Getting contact details"""
     headers = {
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
 
-    response = requests.get(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+    response = requests.get(f"{BASE_URL}/contacts/{create_contact}",
                             headers=headers)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -39,13 +55,13 @@ def test_get_contact(valid_token):
         "__v missing in response"
 
 
-def test_get_contact_without_auth(valid_token):
+def test_get_contact_without_auth(valid_token, create_contact):
     """Getting contact details without auth"""
     headers = {
         "Content-Type": "application/json"
     }
 
-    response = requests.get(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+    response = requests.get(f"{BASE_URL}/contacts/{create_contact}",
                             headers=headers)
     assert response.status_code == 401, (f"Expected status 200, "
                                          f"but got {response.status_code}")

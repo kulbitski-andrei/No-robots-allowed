@@ -14,6 +14,22 @@ def valid_token():
 
 
 @pytest.fixture
+def create_contact(valid_token):
+    """Create contact"""
+    headers = {
+        "Authorization": f"Bearer {valid_token}",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json={"firstName": "John",
+                                                    "lastName": "Doe"})
+    response = response.json()
+    contact_id = response["_id"]
+    return contact_id
+
+
+@pytest.fixture
 def update_data():
     """Update data"""
     return {
@@ -31,13 +47,13 @@ def update_data():
     }
 
 
-def test_full_update_contact(valid_token, update_data):
-    """Successfull update Contact"""
+def test_full_update_contact(valid_token, update_data, create_contact):
+    """Successful update Contact"""
     headers = {
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.put(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+    response = requests.put(f"{BASE_URL}/contacts/{create_contact}",
                             headers=headers,
                             json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
@@ -68,40 +84,40 @@ def test_full_update_contact(valid_token, update_data):
         "Country did not update correctly"
 
 
-def test_full_update_contact_without_auth(valid_token, update_data):
+def test_full_update_contact_without_auth(valid_token, update_data, create_contact):
     """Update contact without auth"""
     headers = {
         "Content-Type": "application/json"
     }
-    response = requests.put(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+    response = requests.put(f"{BASE_URL}/contacts/{create_contact}",
                             headers=headers,
                             json=update_data)
     assert response.status_code == 401, (f"Expected status 401, "
                                          f"but got {response.status_code}")
 
 
-def test_full_update_contact_with_invalid_field(valid_token, update_data):
+def test_full_update_contact_with_invalid_field(valid_token, update_data, create_contact):
     """Update contact without invalid field"""
     update_data["email"] = "failed_emai@sss"
     headers = {
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.put(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+    response = requests.put(f"{BASE_URL}/contacts/{create_contact}",
                             headers=headers,
                             json=update_data)
     assert response.status_code == 400, (f"Expected status 400, "
                                          f"but got {response.status_code}")
 
 
-def test_full_update_contact_with_empty_field(valid_token, update_data):
+def test_full_update_contact_with_empty_field(valid_token, update_data, create_contact):
     """Update contact with empty field"""
     update_data["phone"] = ""
     headers = {
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.put(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+    response = requests.put(f"{BASE_URL}/contacts/{create_contact}",
                             headers=headers,
                             json=update_data)
     assert response.status_code == 400, (f"Expected status 400, "

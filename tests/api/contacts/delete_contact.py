@@ -30,7 +30,7 @@ def create_contact(valid_token):
 
 
 def test_delete_contact_twice(valid_token):
-    """Deleting a unexisting contact should fail"""
+    """Deleting a contact twice"""
     headers = {
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
