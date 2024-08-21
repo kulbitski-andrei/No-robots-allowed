@@ -6,27 +6,12 @@ import pytest
 from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
-@pytest.fixture(scope="session")
-def auth_token_and_user_data():
-    """Fixture to authenticate, retrieve a token, and user data."""
-    # Generate user data with a unique email
-    user_data = UserData.generate_user_data()
-
-    response = requests.post(f"{BASE_URL}/users",
-                             json=user_data, headers=HEADERS)
-    assert response.status_code == 201, (f"Expected status 201, "
-                                         f"but got {response.status_code}")
-
-    response_data = response.json()
-    token = response_data["token"]
-
-    return token, user_data
-
-
+@pytest.mark.priority_high
+@pytest.mark.api_updateuser
+@pytest.mark.level_smoke
 def test_update_user_profile_success(auth_token_and_user_data):
     """Positive test: Successfully update user profile information."""
     auth_token, _ = auth_token_and_user_data
-    # Generate new unique data for update
     update_data = UserData.generate_user_data()
 
     headers = {
@@ -48,11 +33,13 @@ def test_update_user_profile_success(auth_token_and_user_data):
         "Email did not update correctly"
 
 
+@pytest.mark.priority_medium
+@pytest.mark.api_updateuser
+@pytest.mark.level_regression
 def test_update_user_profile_existing_email(auth_token_and_user_data):
     """Negative test: Attempt to update user profile with an existing email."""
     auth_token, user_data = auth_token_and_user_data
 
-    # Register another user with a new unique email
     existing_user_data = UserData.generate_user_data()
     response = requests.post(f"{BASE_URL}/users",
                              json=existing_user_data, headers=HEADERS)
@@ -62,13 +49,11 @@ def test_update_user_profile_existing_email(auth_token_and_user_data):
     response_data = response.json()
     print("Response Data from User Creation:", response_data)  # For debugging
 
-    # Extract email from the response
     existing_email = response_data.get("user", {}).get("email")
     assert existing_email is not None, "Expected 'email' in the response data"
 
-    # Attempt to update profile with an existing email
     update_data = UserData.generate_user_data()
-    update_data["email"] = existing_email  # Use existing email
+    update_data["email"] = existing_email
 
     headers = {
         "Authorization": f"Bearer {auth_token}"
@@ -81,7 +66,6 @@ def test_update_user_profile_existing_email(auth_token_and_user_data):
     response_data = response.json()
     print("Response Data from Update Attempt:", response_data)  # For debugging
 
-    # Check for MongoDB unique index error
     assert "name" in response_data and response_data["name"] == "MongoError", \
         "Expected MongoError in the response data"
     assert "code" in response_data and response_data["code"] == 11000, \
@@ -91,13 +75,15 @@ def test_update_user_profile_existing_email(auth_token_and_user_data):
             existing_email), "Expected existing email in the error details"
 
 
+@pytest.mark.priority_medium
+@pytest.mark.api_updateuser
+@pytest.mark.level_regression
 def test_update_user_profile_malformed_email(auth_token_and_user_data):
     """Negative test: Attempt to update user profile with a malformed email."""
     auth_token, _ = auth_token_and_user_data
 
-    # Generate valid data but replace email with malformed email
     update_data = UserData.generate_user_data()
-    update_data["email"] = "invalid-email-format"  # Malformed email
+    update_data["email"] = "invalid-email-format"
 
     headers = {
         "Authorization": f"Bearer {auth_token}"
@@ -109,9 +95,8 @@ def test_update_user_profile_malformed_email(auth_token_and_user_data):
     assert response.status_code == 400, (f"Expected status 400, "
                                          f"but got {response.status_code}")
     response_data = response.json()
-    print("Response Data from Update Attempt:", response_data)  # For debugging
+    print("Response Data from Update Attempt:", response_data)
 
-    # Check for validation error messages
     assert "_message" in response_data, \
         "Expected '_message' in the response data"
     assert response_data["_message"] == "User validation failed", \
@@ -127,13 +112,15 @@ def test_update_user_profile_malformed_email(auth_token_and_user_data):
         "Unexpected value for 'email' error"
 
 
+@pytest.mark.priority_medium
+@pytest.mark.api_updateuser
+@pytest.mark.level_regression
 def test_update_user_profile_weak_password(auth_token_and_user_data):
     """Negative test: Attempt to update user profile with a weak password."""
     auth_token, _ = auth_token_and_user_data
 
-    # Generate valid data but replace password with a weak one
     update_data = UserData.generate_user_data()
-    update_data["password"] = "short"  # Too short password
+    update_data["password"] = "short"
 
     headers = {
         "Authorization": f"Bearer {auth_token}"
@@ -145,9 +132,8 @@ def test_update_user_profile_weak_password(auth_token_and_user_data):
     assert response.status_code == 400, (f"Expected status 400, "
                                          f"but got {response.status_code}")
     response_data = response.json()
-    print("Response Data from Update Attempt:", response_data)  # For debugging
+    print("Response Data from Update Attempt:", response_data)
 
-    # Check for validation error messages
     assert "_message" in response_data, ("Expected '_message' "
                                          "in the response data")
     assert response_data["_message"] == ("User validation "

@@ -2,9 +2,13 @@
 
 
 import requests
+import pytest
 from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
+@pytest.mark.priority_high
+@pytest.mark.api_signup
+@pytest.mark.level_smoke
 def test_add_user_success():
     """Positive test: successful user registration."""
     user_data = UserData.generate_user_data()
@@ -20,9 +24,11 @@ def test_add_user_success():
     assert "user" in response_data, "Expected 'user' in the response data"
 
 
+@pytest.mark.priority_high
+@pytest.mark.api_signup
+@pytest.mark.level_smoke
 def test_add_user_existing_email():
     """Negative test: adding a user with an existing email."""
-    # First, create a user with a unique email
     user_data = UserData.generate_user_data()
 
     response = requests.post(f"{BASE_URL}/users",
@@ -30,7 +36,6 @@ def test_add_user_existing_email():
     assert response.status_code == 201, (f"Expected status 201, "
                                          f"but got {response.status_code}")
 
-    # Try to create another user with the same email
     response = requests.post(f"{BASE_URL}/users",
                              json=user_data, headers=HEADERS)
     assert response.status_code == 400, (f"Expected status 400, "
@@ -41,10 +46,13 @@ def test_add_user_existing_email():
         "Expected an error message in the response"
 
 
+@pytest.mark.priority_medium
+@pytest.mark.api_signup
+@pytest.mark.level_regression
 def test_add_user_no_first_name():
     """Negative test: adding a user without the required 'firstName' field."""
     user_data = UserData.generate_user_data()
-    del user_data["firstName"]  # Remove the required 'firstName' field
+    del user_data["firstName"]
 
     response = requests.post(f"{BASE_URL}/users",
                              json=user_data, headers=HEADERS)
@@ -58,10 +66,13 @@ def test_add_user_no_first_name():
         "Expected error related to 'firstName'"
 
 
+@pytest.mark.priority_medium
+@pytest.mark.api_signup
+@pytest.mark.level_regression
 def test_add_user_invalid_email():
     """Negative test: adding a user with an invalid email format."""
     user_data = UserData.generate_user_data()
-    user_data["email"] = "invalid-email-format"  # Set an invalid email
+    user_data["email"] = "invalid-email-format"
 
     response = requests.post(f"{BASE_URL}/users",
                              json=user_data, headers=HEADERS)
@@ -75,10 +86,13 @@ def test_add_user_invalid_email():
         "Expected error related to 'email'"
 
 
+@pytest.mark.priority_medium
+@pytest.mark.api_signup
+@pytest.mark.level_regression
 def test_add_user_short_password():
     """Negative test: adding a user with a short password."""
     user_data = UserData.generate_user_data()
-    user_data["password"] = "short"  # Set a password that is too short
+    user_data["password"] = "short"
 
     response = requests.post(f"{BASE_URL}/users",
                              json=user_data, headers=HEADERS)

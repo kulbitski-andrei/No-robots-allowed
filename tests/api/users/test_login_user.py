@@ -6,25 +6,9 @@ import requests
 from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
-@pytest.fixture
-def auth_token_and_user_data():
-    """Fixture to authenticate, retrieve a token, and user data."""
-    # Generate user data using UserData
-    user_data = UserData.generate_user_data()
-
-    response = requests.post(f"{BASE_URL}/users",
-                             json=user_data, headers=HEADERS)
-    assert response.status_code == 201, \
-        f"Expected status 201, but got {response.status_code}"
-
-    response_data = response.json()
-    token = response_data.get("token")
-
-    assert token is not None, "Expected 'token' in the response data"
-
-    return token, user_data
-
-
+@pytest.mark.priority_high
+@pytest.mark.api_login
+@pytest.mark.level_smoke
 def test_login_user_success(auth_token_and_user_data):
     """Positive test: Log in with correct credentials."""
     token, user_data = auth_token_and_user_data
@@ -46,6 +30,9 @@ def test_login_user_success(auth_token_and_user_data):
         "Expected 'token' to be not None"
 
 
+@pytest.mark.priority_high
+@pytest.mark.api_login
+@pytest.mark.level_smoke
 def test_login_user_incorrect_password(auth_token_and_user_data):
     """Negative test: Attempt to log in with incorrect password."""
     token, user_data = auth_token_and_user_data
@@ -75,6 +62,9 @@ def test_login_user_incorrect_password(auth_token_and_user_data):
                                      "for incorrect password")
 
 
+@pytest.mark.priority_medium
+@pytest.mark.api_login
+@pytest.mark.level_regression
 def test_login_user_non_existent_email():
     """Negative test: Attempt to log in with a non-existent email."""
     login_data = {
@@ -91,6 +81,9 @@ def test_login_user_non_existent_email():
                                  "for non-existent email")
 
 
+@pytest.mark.priority_low
+@pytest.mark.api_login
+@pytest.mark.level_regression
 def test_login_user_invalid_email_format():
     """Negative test: Attempt to log in with an invalid email format."""
     login_data = {
