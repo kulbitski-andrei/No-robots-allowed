@@ -2,9 +2,10 @@
 
 
 import pytest
+import requests
 from tests.api.test_data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
-import requests
+
 
 
 @pytest.fixture
@@ -20,7 +21,8 @@ def test_delete_contact_twice(valid_token):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.delete(f"{BASE_URL}/contacts/66c5359f18503e001357c8d1", headers=headers)
+    response = requests.delete(f"{BASE_URL}/contacts/66c5359f18503e001357c8d1",
+                               headers=headers)
     assert response.status_code == 404, (f"Expected status 404, "
                                          f"but got {response.status_code}")
 
@@ -31,7 +33,8 @@ def test_delete_contact(valid_token):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.delete(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers)
+    response = requests.delete(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                               headers=headers)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
 

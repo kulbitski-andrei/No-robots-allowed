@@ -1,7 +1,11 @@
+"""API test Part Update Contact"""
+
+
 import pytest
+import requests
 from tests.api.test_data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
-import requests
+
 
 
 @pytest.fixture
@@ -24,7 +28,8 @@ def test_update_without_auth(valid_token, update_data):
     headers = {
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 401, (f"Expected status 401, "
                                          f"but got {response.status_code}")
@@ -37,7 +42,8 @@ def test_update_first_name(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -53,7 +59,8 @@ def test_update_last_name(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -69,7 +76,8 @@ def test_update_birthdate(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -85,7 +93,8 @@ def test_update_email(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -101,7 +110,8 @@ def test_update_phone(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -117,7 +127,8 @@ def test_update_street1(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -133,7 +144,8 @@ def test_update_street2(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -149,7 +161,8 @@ def test_update_city(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -165,7 +178,8 @@ def test_update_state(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -181,7 +195,8 @@ def test_update_postalcode(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
@@ -197,7 +212,8 @@ def test_update_country(valid_token, update_data):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4", headers=headers,
+    response = requests.patch(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+                              headers=headers,
                               json=update_data)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")

@@ -1,8 +1,10 @@
-import pytest
+"""API test Get Contact"""
 
+import pytest
+import requests
 from tests.api.test_data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
-import requests
+
 
 
 @pytest.fixture
@@ -19,7 +21,8 @@ def test_get_list_contacts(valid_token):
         "Content-Type": "application/json"
     }
 
-    response = requests.get(f"{BASE_URL}/contacts", headers=headers)
+    response = requests.get(f"{BASE_URL}/contacts",
+                            headers=headers)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
 
@@ -30,6 +33,7 @@ def test_get_list_contacts_without_auth(valid_token):
         "Content-Type": "application/json"
     }
 
-    response = requests.get(f"{BASE_URL}/contacts", headers=headers)
+    response = requests.get(f"{BASE_URL}/contacts",
+                            headers=headers)
     assert response.status_code == 401, (f"Expected status 200, "
                                          f"but got {response.status_code}")

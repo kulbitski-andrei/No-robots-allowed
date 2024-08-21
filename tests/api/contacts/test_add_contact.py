@@ -38,7 +38,8 @@ def test_create_contact_success(valid_token, contact_data):
         "Content-Type": "application/json"
     }
 
-    response = requests.post(f"{BASE_URL}/contacts", headers=headers, json=contact_data)
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json=contact_data)
 
     assert response.status_code == 201, f"Expected 201, but got {response.status_code}"
 
@@ -54,9 +55,11 @@ def test_create_contact_missing_required_fields(valid_token):
         "Content-Type": "application/json"
     }
 
-    response = requests.post(f"{BASE_URL}/contacts", headers=headers, json=incomplete_contact_data)
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json=incomplete_contact_data)
 
-    assert response.status_code == 400, f"Expected 400, but got {response.status_code}"
+    assert response.status_code == 400, (f"Expected 400, "
+                                         f"but got {response.status_code}")
 
 
 def test_create_contact_invalid_email(valid_token, contact_data):
@@ -68,9 +71,11 @@ def test_create_contact_invalid_email(valid_token, contact_data):
         "Content-Type": "application/json"
     }
 
-    response = requests.post(f"{BASE_URL}/contacts", headers=headers, json=contact_data)
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json=contact_data)
 
-    assert response.status_code == 400, f"Expected 400, but got {response.status_code}"
+    assert response.status_code == 400, (f"Expected 400,"
+                                         f" but got {response.status_code}")
 
 
 def test_create_contact_unauthorized():
@@ -84,9 +89,11 @@ def test_create_contact_unauthorized():
         "Content-Type": "application/json"
     }
 
-    response = requests.post(f"{BASE_URL}/contacts", headers=headers, json=contact_data)
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json=contact_data)
 
-    assert response.status_code == 401, f"Expected 401, but got {response.status_code}"
+    assert response.status_code == 401, (f"Expected 401,"
+                                         f" but got {response.status_code}")
 
 
 def test_create_contact_invalid_phone(valid_token, contact_data):
@@ -98,9 +105,11 @@ def test_create_contact_invalid_phone(valid_token, contact_data):
         "Content-Type": "application/json"
     }
 
-    response = requests.post(f"{BASE_URL}/contacts", headers=headers, json=contact_data)
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json=contact_data)
 
-    assert response.status_code == 400, f"Expected 400, but got {response.status_code}"
+    assert response.status_code == 400, (f"Expected 400,"
+                                         f" but got {response.status_code}")
 
 
 def test_create_contact_invalid_birthdate(valid_token, contact_data):
@@ -112,9 +121,11 @@ def test_create_contact_invalid_birthdate(valid_token, contact_data):
         "Content-Type": "application/json"
     }
 
-    response = requests.post(f"{BASE_URL}/contacts", headers=headers, json=contact_data)
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json=contact_data)
 
-    assert response.status_code == 400, f"Expected 400, but got {response.status_code}"
+    assert response.status_code == 400, (f"Expected 400,"
+                                         f" but got {response.status_code}")
 
 
 def test_create_contact_invalid_postalcode(valid_token, contact_data):
@@ -126,6 +137,8 @@ def test_create_contact_invalid_postalcode(valid_token, contact_data):
         "Content-Type": "application/json"
     }
 
-    response = requests.post(f"{BASE_URL}/contacts", headers=headers, json=contact_data)
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json=contact_data)
 
-    assert response.status_code == 400, f"Expected 400, but got {response.status_code}"
+    assert response.status_code == 400, (f"Expected 400, "
+                                         f"but got {response.status_code}")
