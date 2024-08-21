@@ -56,3 +56,8 @@ LONG_CITY = "AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno"  # 41/40
 LONG_STATE_PROVINCE = "Abcdefghijklmnopqrstu"  # 21/20
 LONG_POSTAL_CODE = "12345678901"  # 11/10
 LONG_COUNTRY = "AbcdefghijklmnopqrstuvwxyzAbcdefghijklmno"  # 41/40
+
+# VALID_TOKEN
+VALID_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfa"
+               "WQiOiI2NmM1MGM1MDE4NTAzZTAwMTM1N2M4YTEiLCJpYXQiOjE3MjQxODk"
+               "3Nzd9.0YOCyhA5KT9pntZ5k5s8L8yFMwqK-bQfzmBtirUi3pg")
