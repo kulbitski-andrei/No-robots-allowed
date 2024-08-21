@@ -7,7 +7,6 @@ from tests.api.test_data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
 
 
-
 @pytest.fixture
 def valid_token():
     """API test Add user"""
@@ -46,7 +45,8 @@ def test_delete_contact_with_invalid_id(valid_token):
         "Content-Type": "application/json"
     }
     response = requests.delete(f"{BASE_URL}/contacts/dasfadga", headers=headers)
-    assert response.status_code == 400, (f"Expected status 400, "
+    assert response.status_code == 400, (f"Expected status 400,"
+                                         f" "
                                          f"but got {response.status_code}")
 
 

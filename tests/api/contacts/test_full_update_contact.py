@@ -6,7 +6,6 @@ from tests.api.test_data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
 
 
-
 @pytest.fixture
 def valid_token():
     """API test Add user"""

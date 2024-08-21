@@ -41,7 +41,8 @@ def test_create_contact_success(valid_token, contact_data):
     response = requests.post(f"{BASE_URL}/contacts",
                              headers=headers, json=contact_data)
 
-    assert response.status_code == 201, f"Expected 201, but got {response.status_code}"
+    assert response.status_code == 201, \
+        f"Expected 201, but got {response.status_code}"
 
 
 def test_create_contact_missing_required_fields(valid_token):
