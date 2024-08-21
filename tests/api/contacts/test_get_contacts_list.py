@@ -6,7 +6,6 @@ from tests.api.test_data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
 
 
-
 @pytest.fixture
 def valid_token():
     """Getting a valid token"""
@@ -17,7 +16,7 @@ def valid_token():
 def test_get_list_contacts(valid_token):
     """Getting a list of contacts"""
     headers = {
-        "Authorization": f"Bearer {valid_token}",
+        "Authorization": f"Bearer {VALID_TOKEN}",
         "Content-Type": "application/json"
     }
 

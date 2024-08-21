@@ -1,6 +1,5 @@
 """API test Delete Contact"""
 
-
 import pytest
 import requests
 from tests.api.test_data_api_users import BASE_URL
@@ -12,6 +11,22 @@ def valid_token():
     """API test Add user"""
     valid_token = VALID_TOKEN
     return valid_token
+
+
+@pytest.fixture
+def create_contact(valid_token):
+    """Create contact"""
+    headers = {
+        "Authorization": f"Bearer {valid_token}",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(f"{BASE_URL}/contacts",
+                             headers=headers, json={"firstName": "John",
+                                                    "lastName": "Doe"})
+    response = response.json()
+    id = response["_id"]
+    return id
 
 
 def test_delete_contact_twice(valid_token):
@@ -26,13 +41,13 @@ def test_delete_contact_twice(valid_token):
                                          f"but got {response.status_code}")
 
 
-def test_delete_contact(valid_token):
+def test_delete_contact(valid_token, create_contact):
     """Deleting a contact should succeed"""
     headers = {
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.delete(f"{BASE_URL}/contacts/66c50c9a18503e001357c8a4",
+    response = requests.delete(f"{BASE_URL}/contacts/{create_contact}",
                                headers=headers)
     assert response.status_code == 200, (f"Expected status 200, "
                                          f"but got {response.status_code}")
