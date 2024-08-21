@@ -25,8 +25,8 @@ def create_contact(valid_token):
                              headers=headers, json={"firstName": "John",
                                                     "lastName": "Doe"})
     response = response.json()
-    id = response["_id"]
-    return id
+    contact_id = response["_id"]
+    return contact_id
 
 
 def test_delete_contact_twice(valid_token):
