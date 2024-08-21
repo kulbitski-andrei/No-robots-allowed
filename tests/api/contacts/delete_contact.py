@@ -44,7 +44,8 @@ def test_delete_contact_with_invalid_id(valid_token):
         "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
-    response = requests.delete(f"{BASE_URL}/contacts/dasfadga", headers=headers)
+    response = requests.delete(f"{BASE_URL}/contacts/dasfadga",
+                               headers=headers)
     assert response.status_code == 400, (f"Expected status 400,"
                                          f" "
                                          f"but got {response.status_code}")
@@ -55,6 +56,7 @@ def test_delete_contact_without_auth(valid_token):
     headers = {
         "Content-Type": "application/json"
     }
-    response = requests.delete(f"{BASE_URL}/contacts/dasfadga", headers=headers)
+    response = requests.delete(f"{BASE_URL}/contacts/dasfadga",
+                               headers=headers)
     assert response.status_code == 401, (f"Expected status 401, "
                                          f"but got {response.status_code}")
