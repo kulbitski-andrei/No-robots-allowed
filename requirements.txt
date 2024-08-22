@@ -8,3 +8,4 @@ cprint~=1.2.2
 logging~=0.4.9.6
 pytest~=8.2.2
 selenium~=4.23.1
+allure-pytest
