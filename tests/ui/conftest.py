@@ -22,6 +22,7 @@ def general_fixture():
     chrome_options = Options()
     chrome_options.add_argument("--disable-search-engine-choice-screen")
     chrome_browser = webdriver.Chrome(options=chrome_options)
+    chrome_options.add_argument('--headless=new')
     chrome_browser.implicitly_wait(5)
     chrome_browser.get(const.URL_LANDING)
     current_page = LoginPage(chrome_browser)
@@ -43,8 +44,9 @@ def browser_sign_up_log_in():
     """
     logger.info("Fixture: Setting up started")
     chrome_options = Options()
-    chrome_options.add_argument("--disable-search-engine-choice-screen")
+    # chrome_options.add_argument("--disable-search-engine-choice-screen")
     chrome_browser = webdriver.Chrome(options=chrome_options)
+    chrome_options.add_argument('--headless=new')
     chrome_browser.implicitly_wait(5)
     chrome_browser.get(const.URL_LANDING)
     yield chrome_browser
@@ -63,8 +65,9 @@ def browser_contacts():
     """
     logger.info("Fixture: Setting up started")
     chrome_options = Options()
-    chrome_options.add_argument("--disable-search-engine-choice-screen")
+    # chrome_options.add_argument("--disable-search-engine-choice-screen")
     chrome_browser = webdriver.Chrome(options=chrome_options)
+    chrome_options.add_argument('--headless=new')
     chrome_browser.implicitly_wait(5)
     chrome_browser.get(const.URL_LANDING)
     logger.debug("Fixture: Logging in")
