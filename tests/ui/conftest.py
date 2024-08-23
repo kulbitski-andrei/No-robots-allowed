@@ -33,8 +33,8 @@ from pages.login_page import LoginPage
 #     current_page.click_button(logout_button)
 #     chrome_browser.quit()
 #     print("")
-
-
+#
+#
 # @pytest.fixture
 # def browser_sign_up_log_in():
 #     """
@@ -54,8 +54,8 @@ from pages.login_page import LoginPage
 #     current_page = ContactListPage(chrome_browser)
 #     current_page.click_button(logout_button)
 #     chrome_browser.quit()
-
-
+#
+#
 # @pytest.fixture
 # def browser_contacts():
 #     """
@@ -90,6 +90,7 @@ from pages.login_page import LoginPage
 #         time.sleep(1)
 #         alert.accept()
 #     chrome_browser.quit()
+
 
 @pytest.fixture
 def browser_contacts():
