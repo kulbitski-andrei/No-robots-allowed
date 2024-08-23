@@ -26,7 +26,8 @@ def auth_token_and_user_data():
                                                f"but got {login_response.status_code}")
 
     response_data = login_response.json()
-    return {
-        "token": response_data["token"],
-        "user_data": user_data
-    }
+    # return {
+    #     "token": response_data["token"],
+    #     "user_data": user_data
+    # }
+    return response_data["token"], user_data
