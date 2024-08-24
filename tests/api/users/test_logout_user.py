@@ -3,7 +3,7 @@
 
 import pytest
 import requests
-from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
+from tests.api.test_data_api_users import BASE_URL
 
 
 @pytest.mark.priority_high
@@ -50,7 +50,7 @@ def test_logout_user_invalid_token():
 @pytest.mark.level_regression
 def test_logout_user_twice(auth_token_and_user_data):
     """Negative test: Attempt to log out twice."""
-    token, _ = auth_token_and_user_data  # распаковываем кортеж
+    token, _ = auth_token_and_user_data
     headers = {
         "Authorization": f"Bearer {token}"
     }

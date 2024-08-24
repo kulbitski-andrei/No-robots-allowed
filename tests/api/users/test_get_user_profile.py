@@ -3,7 +3,7 @@
 
 import requests
 import pytest
-from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
+from tests.api.test_data_api_users import BASE_URL, HEADERS
 
 
 @pytest.mark.priority_high
@@ -11,9 +11,9 @@ from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 @pytest.mark.level_smoke
 def test_get_user_profile(auth_token_and_user_data):
     """Test to get the user's profile information."""
-    auth_token, user_data = auth_token_and_user_data  # auth_token_and_user_data returns a tuple
+    auth_token, user_data = auth_token_and_user_data
     headers = {
-        "Authorization": f"Bearer {auth_token}",  # correct token extraction
+        "Authorization": f"Bearer {auth_token}",
         **HEADERS
     }
 

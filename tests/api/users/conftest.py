@@ -1,4 +1,4 @@
-"""Fixtures"""
+"""Fixtures API"""
 
 
 import pytest

@@ -1,15 +1,50 @@
 """PYTEST FIXTURE STORAGE"""
 
-import time
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import test_data.constants as const
 from logger.log_setup import logger
-from pages.contact_details_page import ContactDetailsPage, delete_button
-from pages.contact_list_page import ContactListPage, logout_button
+# from pages.contact_details_page import ContactDetailsPage, delete_button
+# from pages.contact_list_page import ContactListPage, logout_button
 from pages.login_page import LoginPage
 
+
+@pytest.fixture
+def browser_contacts():
+    """Fixture for testing contacts page."""
+    options = Options()
+    options.add_argument('--start-maximized')
+    options.add_argument('--disable-cache')
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--disable-blink-features=MetricsInterceptor')
+    options.add_argument("--headless=new")
+    chrome_browser = webdriver.Chrome(options=options)
+    chrome_browser.get(const.URL_LANDING)
+    current_page = LoginPage(chrome_browser)
+    current_page.complete_login(const.EMAIL, const.PASSWORD)
+    chrome_browser.implicitly_wait(10)
+
+    yield chrome_browser
+    chrome_browser.quit()
+
+
+@pytest.fixture
+def browser_sign_up_log_in():
+    """Fixture for testing sign up and log in page."""
+    logger.info("Fixture: Setting up started")
+    options = Options()
+    options.add_argument('--start-maximized')
+    options.add_argument('--disable-cache')
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--disable-blink-features=MetricsInterceptor')
+    options.add_argument("--headless=new")
+    chrome_browser = webdriver.Chrome(options=options)
+    chrome_browser.implicitly_wait(10)
+    chrome_browser.get(const.URL_LANDING)
+
+    yield chrome_browser
+    chrome_browser.quit()
 
 # @pytest.fixture
 # def general_fixture():
@@ -90,44 +125,3 @@ from pages.login_page import LoginPage
 #         time.sleep(1)
 #         alert.accept()
 #     chrome_browser.quit()
-
-
-@pytest.fixture
-def browser_contacts():
-
-    options = Options()
-    options.add_argument('--start-maximized')
-    options.add_argument('--disable-cache')
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--disable-blink-features=MetricsInterceptor')
-    options.add_argument("--headless=new")
-    chrome_browser = webdriver.Chrome(options=options)
-    chrome_browser.get(const.URL_LANDING)
-    current_page = LoginPage(chrome_browser)
-    current_page.complete_login(const.EMAIL, const.PASSWORD)
-    chrome_browser.implicitly_wait(10)
-
-    yield chrome_browser
-    chrome_browser.quit()
-
-
-@pytest.fixture
-def browser_sign_up_log_in():
-    """
-    Fixture for testing sign up and log in page.
-    Set up: No actions.
-    Tear down: Logout.
-    """
-    logger.info("Fixture: Setting up started")
-    options = Options()
-    options.add_argument('--start-maximized')
-    options.add_argument('--disable-cache')
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--disable-blink-features=MetricsInterceptor')
-    options.add_argument("--headless=new")
-    chrome_browser = webdriver.Chrome(options=options)
-    chrome_browser.implicitly_wait(10)
-    chrome_browser.get(const.URL_LANDING)
-
-    yield chrome_browser
-    chrome_browser.quit()
