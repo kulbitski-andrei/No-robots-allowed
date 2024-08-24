@@ -1,4 +1,4 @@
-FROM  jenkins/jenkins:latest --platform linux/amd64
+FROM jenkins/jenkins:latest --platform linux/amd64
 USER root
 RUN apt update
 RUN apt install -y wget git unzip build-essential software-properties-common python3 libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev xvfb
