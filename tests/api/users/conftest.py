@@ -22,8 +22,8 @@ def auth_token_and_user_data():
     }
     login_response = requests.post(f"{BASE_URL}/users/login",
                                    json=login_data, headers=HEADERS)
-    assert login_response.status_code == 200, (f"Expected status 200, "
-                                               f"but got {login_response.status_code}")
+    assert login_response.status_code == 200, \
+        f"Expected status 200, but got {login_response.status_code}"
 
     response_data = login_response.json()
     # return {
