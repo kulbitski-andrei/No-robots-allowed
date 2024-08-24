@@ -4,7 +4,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import test_data.constants as const
-from logger.log_setup import logger
+from log_test.log_setup import logger
 # from pages.contact_details_page import ContactDetailsPage, delete_button
 # from pages.contact_list_page import ContactListPage, logout_button
 from pages.login_page import LoginPage
@@ -53,7 +53,7 @@ def browser_sign_up_log_in():
 #     Set up: Login.
 #     Tear down: Logout.
 #     """
-#     logger.info("Fixture: Setting up started")
+#     log_test.info("Fixture: Setting up started")
 #     chrome_options = Options()
 #     chrome_options.add_argument("--disable-search-engine-choice-screen")
 #     chrome_browser = webdriver.Chrome(options=chrome_options)
@@ -77,7 +77,7 @@ def browser_sign_up_log_in():
 #     Set up: No actions.
 #     Tear down: Logout.
 #     """
-#     logger.info("Fixture: Setting up started")
+#     log_test.info("Fixture: Setting up started")
 #     chrome_options = Options()
 #     # chrome_options.add_argument("--disable-search-engine-choice-screen")
 #     chrome_browser = webdriver.Chrome(options=chrome_options)
@@ -98,24 +98,24 @@ def browser_sign_up_log_in():
 #     Set up: Log in.
 #     Tear down: Delete contact in case it was created during the test.
 #     """
-#     logger.info("Fixture: Setting up started")
+#     log_test.info("Fixture: Setting up started")
 #     chrome_options = Options()
 #     chrome_options.add_argument("--disable-search-engine-choice-screen")
 #     chrome_browser = webdriver.Chrome(options=chrome_options)
 #     chrome_options.add_argument('--headless=new')
 #     chrome_browser.implicitly_wait(5)
 #     chrome_browser.get(const.URL_LANDING)
-#     logger.debug("Fixture: Logging in")
+#     log_test.debug("Fixture: Logging in")
 #     current_page = LoginPage(chrome_browser)
 #     current_page.complete_login(const.EMAIL, const.PASSWORD)
 #     current_page = ContactListPage(chrome_browser)
 #     contact_count_before_yield = len(current_page.locate_contact_rows())
-#     logger.debug("Fixture: Yielding browser control to the test file")
+#     log_test.debug("Fixture: Yielding browser control to the test file")
 #     yield chrome_browser
 #     chrome_browser.get(const.URL_CONTACTS)
 #     current_page = ContactListPage(chrome_browser)
 #     contact_count_after_yield = len(current_page.locate_contact_rows())
-#     logger.debug("Fixture: Deletting Contact (on demand)")
+#     log_test.debug("Fixture: Deletting Contact (on demand)")
 #     if contact_count_after_yield > contact_count_before_yield:
 #         current_page.open_contact()
 #         current_page = ContactDetailsPage(chrome_browser)

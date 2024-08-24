@@ -5,7 +5,7 @@ import pytest
 from pages.contact_list_page import ContactListPage, add_contact_button
 from pages.add_contact_page import AddContactPage
 import test_data.constants as const
-from logger.log_setup import logger
+from log_test.log_setup import logger
 
 
 @pytest.mark.priority_high

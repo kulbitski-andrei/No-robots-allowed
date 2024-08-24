@@ -11,7 +11,7 @@ from pages.edit_contact_page import (EditContactPage, first_name_field,
                                      city_field, state_province_field,
                                      postal_code_field, country_field)
 import test_data.constants as const
-from logger.log_setup import logger
+from log_test.log_setup import logger
 
 
 @pytest.mark.priority_high

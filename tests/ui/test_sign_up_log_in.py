@@ -8,7 +8,7 @@ from pages.contact_list_page import ContactListPage
 from pages.signup_page import SignupPage
 import test_data.constants as const
 from test_data.service_methods import generate_random_email
-from logger.log_setup import logger
+from log_test.log_setup import logger
 
 
 @pytest.mark.priority_high
