@@ -3,7 +3,7 @@
 import pytest
 from pages.contact_list_page import ContactListPage
 from pages.contact_details_page import ContactDetailsPage, delete_button
-from logger.log_setup import logger
+from log_test.log_setup import logger
 
 
 @pytest.mark.priority_high
