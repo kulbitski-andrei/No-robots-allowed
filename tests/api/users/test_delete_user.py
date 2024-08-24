@@ -3,7 +3,7 @@
 
 import pytest
 import requests
-from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
+from tests.api.test_data_api_users import BASE_URL
 
 
 @pytest.mark.priority_high
@@ -11,7 +11,7 @@ from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 @pytest.mark.level_smoke
 def test_delete_user(auth_token_and_user_data):
     """Positive test: Successfully delete a user."""
-    token = auth_token_and_user_data["token"]
+    token, _ = auth_token_and_user_data  # Распаковываем кортеж
     headers = {
         "Authorization": f"Bearer {token}"
     }
@@ -49,7 +49,7 @@ def test_delete_user_invalid_token():
 @pytest.mark.level_regression
 def test_delete_user_twice(auth_token_and_user_data):
     """Negative test: Attempt to delete a user twice."""
-    token = auth_token_and_user_data["token"]
+    token, _ = auth_token_and_user_data  # Распаковываем кортеж
     headers = {
         "Authorization": f"Bearer {token}"
     }
