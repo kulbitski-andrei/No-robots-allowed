@@ -1,16 +1,8 @@
-"""API tests Get Contact"""
+"""API test Get Contact"""
 
 import pytest
 import requests
-from tests.api.data_api_users import BASE_URL
-from test_data.constants import VALID_TOKEN
-
-
-@pytest.fixture
-def valid_token():
-    """Getting a valid token"""
-    valid_token = VALID_TOKEN
-    return valid_token
+from tests.api.contacts.test_data_api_contacts import BASE_URL
 
 
 @pytest.mark.high
@@ -19,7 +11,7 @@ def valid_token():
 def test_get_list_contacts(valid_token):
     """Getting a list of contacts"""
     headers = {
-        "Authorization": f"Bearer {VALID_TOKEN}",
+        "Authorization": f"Bearer {valid_token}",
         "Content-Type": "application/json"
     }
 
