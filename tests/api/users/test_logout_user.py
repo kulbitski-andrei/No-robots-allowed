@@ -3,7 +3,7 @@
 
 import pytest
 import requests
-from tests.test_data import BASE_URL
+from tests.test_data.data_api_users import BASE_URL
 
 
 @pytest.mark.high

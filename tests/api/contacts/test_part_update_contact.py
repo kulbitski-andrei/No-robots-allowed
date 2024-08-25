@@ -3,8 +3,8 @@
 
 import pytest
 import requests
-from tests.test_data import BASE_URL
-from tests.test_data import VALID_TOKEN
+from tests.test_data.data_api_users import BASE_URL
+from tests.test_data.constants import VALID_TOKEN
 
 
 @pytest.fixture
