@@ -6,9 +6,9 @@ import pytest
 from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_signup
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_add_user_success():
     """Positive test: successful user registration."""
     user_data = UserData.generate_user_data()
@@ -24,9 +24,9 @@ def test_add_user_success():
     assert "user" in response_data, "Expected 'user' in the response data"
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_signup
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_add_user_existing_email():
     """Negative test: adding a user with an existing email."""
     user_data = UserData.generate_user_data()
@@ -46,9 +46,9 @@ def test_add_user_existing_email():
         "Expected an error message in the response"
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_signup
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_add_user_no_first_name():
     """Negative test: adding a user without the required 'firstName' field."""
     user_data = UserData.generate_user_data()
@@ -66,9 +66,9 @@ def test_add_user_no_first_name():
         "Expected error related to 'firstName'"
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_signup
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_add_user_invalid_email():
     """Negative test: adding a user with an invalid email format."""
     user_data = UserData.generate_user_data()
@@ -86,9 +86,9 @@ def test_add_user_invalid_email():
         "Expected error related to 'email'"
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_signup
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.level_regress
+@pytest.mark.API
 def test_add_user_short_password():
     """Negative test: adding a user with a short password."""
     user_data = UserData.generate_user_data()

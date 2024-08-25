@@ -30,6 +30,9 @@ def valid_token():
     return valid_token
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_get_contact(valid_token, create_contact):
     """Getting contact details"""
     headers = {
@@ -55,6 +58,9 @@ def test_get_contact(valid_token, create_contact):
         "__v missing in response"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_get_contact_without_auth(valid_token, create_contact):
     """Getting contact details without auth"""
     headers = {
@@ -67,6 +73,9 @@ def test_get_contact_without_auth(valid_token, create_contact):
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_get_contact_with_invalid_id(valid_token):
     """Getting contact details with invalid id"""
     headers = {

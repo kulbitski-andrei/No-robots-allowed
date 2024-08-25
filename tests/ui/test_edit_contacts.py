@@ -14,8 +14,9 @@ import test_data.constants as const
 from log_test.log_setup import logger
 
 
-@pytest.mark.priority_high
-@pytest.mark.ui_edit_contact
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.UI
 def test_edit_contact(browser_contacts):
     """
     Test the editing of an existing contact.
@@ -56,8 +57,9 @@ def test_edit_contact(browser_contacts):
     logger.info("TEST 1: Executed")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.ui_edit_contact
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.UI
 def test_edit_contact_with_empty_fields(browser_contacts):
     """
     Test the editing of an existing contact
@@ -82,8 +84,9 @@ def test_edit_contact_with_empty_fields(browser_contacts):
     logger.info("TEST 2: Executed")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.ui_edit_contact
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.UI
 def test_edit_contact_with_invalid_characters(browser_contacts):
     """
     Test the editing of an existing contact
@@ -118,8 +121,9 @@ def test_edit_contact_with_invalid_characters(browser_contacts):
     logger.info("TEST 3: Executed")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.ui_edit_contact
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.UI
 def test_edit_contact_with_max_amount_of_characters_exceeded(browser_contacts):
     """
     Test the editing of an existing contact

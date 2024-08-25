@@ -11,8 +11,9 @@ from test_data.service_methods import generate_random_email
 from log_test.log_setup import logger
 
 
-@pytest.mark.priority_high
-@pytest.mark.ui_log_in
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.UI
 def test_log_in_valid_credentials(browser_sign_up_log_in):
     """
     Test if user is able to login with correct login and password.
@@ -35,8 +36,9 @@ def test_log_in_valid_credentials(browser_sign_up_log_in):
     logger.info("TEST 1: Executed")
 
 
-@pytest.mark.priority_high
-@pytest.mark.ui_log_in
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.UI
 def test_log_in_icorrect_password(browser_sign_up_log_in):
     """
     Test the attempt to log in with valid email and invalid password.
@@ -51,8 +53,9 @@ def test_log_in_icorrect_password(browser_sign_up_log_in):
     logger.info("TEST 2: Executed")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.ui_log_in
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.UI
 def test_log_in_empty_fields(browser_sign_up_log_in):
     """
     Test the attempt to log in with empty email and password fields.
@@ -67,8 +70,9 @@ def test_log_in_empty_fields(browser_sign_up_log_in):
     logger.info("TEST 3: Executed")
 
 
-@pytest.mark.priority_high
-@pytest.mark.ui_sign_up
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.UI
 def test_sign_up_with_valid_credentials(browser_sign_up_log_in):
     """
     Test if it's able to create a new user login and password.
@@ -96,8 +100,9 @@ def test_sign_up_with_valid_credentials(browser_sign_up_log_in):
     logger.info("TEST 4: Executed")
 
 
-@pytest.mark.priority_high
-@pytest.mark.ui_sign_up
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.UI
 def test_sign_up_with_existing_email(browser_sign_up_log_in):
     """
     Test the attempt to log in with existing email.
@@ -117,8 +122,9 @@ def test_sign_up_with_existing_email(browser_sign_up_log_in):
     logger.info("TEST 5: Executed")
 
 
-@pytest.mark.priority_high
-@pytest.mark.ui_sign_up
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.UI
 def test_sign_up_with_invalid_email(browser_sign_up_log_in):
     """
     Test the attempt to log in with invalid email.
@@ -139,8 +145,9 @@ def test_sign_up_with_invalid_email(browser_sign_up_log_in):
     logger.info("TEST 6: Executed")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.ui_sign_up
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.UI
 def test_sign_up_empty_fields(browser_sign_up_log_in):
     """
     Test the attempt to sign up with empty form.
@@ -161,8 +168,9 @@ def test_sign_up_empty_fields(browser_sign_up_log_in):
     logger.info("TEST 7: Executed")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.ui_log_out
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.UI
 def test_log_out(browser_sign_up_log_in):
     """
     Test of logging out from the system.

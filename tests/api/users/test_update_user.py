@@ -6,9 +6,9 @@ import pytest
 from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_updateuser
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_update_user_profile_success(auth_token_and_user_data):
     """Positive test: Successfully update user profile information."""
     auth_token, _ = auth_token_and_user_data
@@ -33,9 +33,9 @@ def test_update_user_profile_success(auth_token_and_user_data):
         "Email did not update correctly"
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_updateuser
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_user_profile_existing_email(auth_token_and_user_data):
     """Negative test: Attempt to update user profile with an existing email."""
     auth_token, user_data = auth_token_and_user_data
@@ -75,9 +75,9 @@ def test_update_user_profile_existing_email(auth_token_and_user_data):
             existing_email), "Expected existing email in the error details"
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_updateuser
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_user_profile_malformed_email(auth_token_and_user_data):
     """Negative test: Attempt to update user profile with a malformed email."""
     auth_token, _ = auth_token_and_user_data
@@ -112,9 +112,9 @@ def test_update_user_profile_malformed_email(auth_token_and_user_data):
         "Unexpected value for 'email' error"
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_updateuser
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_user_profile_weak_password(auth_token_and_user_data):
     """Negative test: Attempt to update user profile with a weak password."""
     auth_token, _ = auth_token_and_user_data

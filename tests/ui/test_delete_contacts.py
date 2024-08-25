@@ -6,8 +6,9 @@ from pages.contact_details_page import ContactDetailsPage, delete_button
 from log_test.log_setup import logger
 
 
-@pytest.mark.priority_high
-@pytest.mark.delete_contact
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.UI
 def test_delete_contact(browser_contacts):
     """
     Test the deletion of an existing contact.

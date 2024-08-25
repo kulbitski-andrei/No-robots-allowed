@@ -6,9 +6,9 @@ import pytest
 from tests.api.test_data_api_users import BASE_URL, HEADERS
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_getuser
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_get_user_profile(auth_token_and_user_data):
     """Test to get the user's profile information."""
     auth_token, user_data = auth_token_and_user_data

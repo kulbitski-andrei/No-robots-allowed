@@ -6,9 +6,9 @@ import requests
 from tests.api.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_login
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_login_user_success(auth_token_and_user_data):
     """Positive test: Log in with correct credentials."""
     token, user_data = auth_token_and_user_data
@@ -30,9 +30,9 @@ def test_login_user_success(auth_token_and_user_data):
         "Expected 'token' to be not None"
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_login
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_login_user_incorrect_password(auth_token_and_user_data):
     """Negative test: Attempt to log in with incorrect password."""
     token, user_data = auth_token_and_user_data
@@ -62,9 +62,9 @@ def test_login_user_incorrect_password(auth_token_and_user_data):
                                      "for incorrect password")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_login
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_login_user_non_existent_email():
     """Negative test: Attempt to log in with a non-existent email."""
     login_data = {
@@ -81,9 +81,9 @@ def test_login_user_non_existent_email():
                                  "for non-existent email")
 
 
-@pytest.mark.priority_low
-@pytest.mark.api_login
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_login_user_invalid_email_format():
     """Negative test: Attempt to log in with an invalid email format."""
     login_data = {

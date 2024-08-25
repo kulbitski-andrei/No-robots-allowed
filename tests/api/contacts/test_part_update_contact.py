@@ -38,6 +38,9 @@ def update_data():
     }
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_without_auth(valid_token, update_data, create_contact):
     """Update contact without auth"""
     headers = {
@@ -50,6 +53,9 @@ def test_update_without_auth(valid_token, update_data, create_contact):
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_update_first_name(valid_token, update_data, create_contact):
     """"Update contact first name"""
     update_data["firstName"] = "Alex"
@@ -67,6 +73,9 @@ def test_update_first_name(valid_token, update_data, create_contact):
         "First name did not update correctly"
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_update_last_name(valid_token, update_data, create_contact):
     """Update contact last name"""
     update_data["lastName"] = "Userovich"
@@ -84,6 +93,9 @@ def test_update_last_name(valid_token, update_data, create_contact):
         "Last name did not update correctly"
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_update_birthdate(valid_token, update_data, create_contact):
     """Update contact birthdate"""
     update_data["birthdate"] = "1999-12-12"
@@ -101,6 +113,9 @@ def test_update_birthdate(valid_token, update_data, create_contact):
         "Birth Date did not update correctly"
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_update_email(valid_token, update_data, create_contact):
     """Update contact email"""
     update_data["email"] = "alex@mail.com"
@@ -118,6 +133,9 @@ def test_update_email(valid_token, update_data, create_contact):
         "Email did not update correctly"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_phone(valid_token, update_data, create_contact):
     """Update contact phone"""
     update_data["phone"] = "13535434"
@@ -135,6 +153,9 @@ def test_update_phone(valid_token, update_data, create_contact):
         "Phone did not update correctly"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_street1(valid_token, update_data, create_contact):
     """Update contact street1"""
     update_data["street1"] = "Test Street 1"
@@ -152,6 +173,9 @@ def test_update_street1(valid_token, update_data, create_contact):
         "Street1 did not update correctly"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_street2(valid_token, update_data, create_contact):
     """Update contact street2"""
     update_data["street2"] = "Test Street 2"
@@ -169,6 +193,9 @@ def test_update_street2(valid_token, update_data, create_contact):
         "Street2 did not update correctly"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_city(valid_token, update_data, create_contact):
     """Update contact city"""
     update_data["city"] = "Test City Update"
@@ -186,6 +213,9 @@ def test_update_city(valid_token, update_data, create_contact):
         "City did not update correctly"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_state(valid_token, update_data, create_contact):
     """Update contact state"""
     update_data["stateProvince"] = "Test Province Update"
@@ -203,6 +233,9 @@ def test_update_state(valid_token, update_data, create_contact):
         "Province did not update correctly"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_postalcode(valid_token, update_data, create_contact):
     """Update contact postal code"""
     update_data["postalCode"] = "1354347"
@@ -220,6 +253,9 @@ def test_update_postalcode(valid_token, update_data, create_contact):
         "Postal code did not update correctly"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_update_country(valid_token, update_data, create_contact):
     """Update contact country"""
     update_data["country"] = "1354347"
