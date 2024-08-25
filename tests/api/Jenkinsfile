@@ -16,6 +16,7 @@ pipeline {
         stage('Run API Tests') {
             steps {
                 sh '''
+                    ls -l
                     pytest --alluredir=allure-results -m API
                 '''
             }

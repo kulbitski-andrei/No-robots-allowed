@@ -87,7 +87,7 @@ def test_add_user_invalid_email():
 
 
 @pytest.mark.medium
-@pytest.mark.level_regress
+@pytest.mark.regress
 @pytest.mark.API
 def test_add_user_short_password():
     """Negative test: adding a user with a short password."""
