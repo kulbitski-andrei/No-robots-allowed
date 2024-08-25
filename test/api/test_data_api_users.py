@@ -1,4 +1,4 @@
-"""Test data for API Users tests"""
+"""Test data for API Users test"""
 
 import uuid
 
