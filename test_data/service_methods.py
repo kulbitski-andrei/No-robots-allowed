@@ -24,6 +24,9 @@ def generate_random_email():
 
 
 def add_arguments(options):
+    """
+    Providing all necessary arguments for the options instance
+    """
     options.add_argument('--start-maximized')
     options.add_argument('--disable-cache')
     options.add_argument('--ignore-certificate-errors')
