@@ -1,3 +1,6 @@
+"""Fixtures API"""
+
+
 import uuid
 import pytest
 import requests
@@ -6,17 +9,16 @@ from tests.api.contacts.test_data_api_contacts import BASE_URL
 
 @pytest.fixture
 def valid_token():
+    """Get a valid token."""
     headers = {
         "Content-Type": "application/json"
     }
     unique_email = f"test_user_{uuid.uuid4()}@fake.com"
-
-    response = requests.post(f"{BASE_URL}/users",
-                             headers=headers, json={
-            "firstName": "Test",
-            "lastName": "User",
-            "email": unique_email,
-            "password": "myPassword"
+    response = requests.post(f"{BASE_URL}/users", headers=headers, json={
+        "firstName": "Test",
+        "lastName": "User",
+        "email": unique_email,
+        "password": "myPassword"
         })
     data = response.json()
     valid_token = data["token"]
