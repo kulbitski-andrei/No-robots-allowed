@@ -79,7 +79,8 @@ def test_update_user_profile_existing_email(auth_token_and_user_data):
 @pytest.mark.regress
 @pytest.mark.API
 def test_update_user_profile_malformed_email(auth_token_and_user_data):
-    """Negative tests: Attempt to update user profile with a malformed email."""
+    """Negative tests: Attempt to update user
+    profile with a malformed email."""
     auth_token, _ = auth_token_and_user_data
 
     update_data = UserData.generate_user_data()
