@@ -1,8 +1,8 @@
-"""API test Add Contact"""
+"""API tests Add Contact"""
 
 import requests
 import pytest
-from tests.api.test_data_api_users import BASE_URL
+from tests.api.users.data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
 
 
