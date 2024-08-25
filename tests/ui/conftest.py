@@ -98,7 +98,7 @@ def browser_sign_up_log_in():
 #     """
 #     Fixture for testing contacts page.
 #     Set up: Log in.
-#     Tear down: Delete contact in case it was created during the test.
+#     Tear down: Delete contact in case it was created during the tests.
 #     """
 #     log_test.info("Fixture: Setting up started")
 #     chrome_options = Options()
@@ -112,7 +112,7 @@ def browser_sign_up_log_in():
 #     current_page.complete_login(const.EMAIL, const.PASSWORD)
 #     current_page = ContactListPage(chrome_browser)
 #     contact_count_before_yield = len(current_page.locate_contact_rows())
-#     log_test.debug("Fixture: Yielding browser control to the test file")
+#     log_test.debug("Fixture: Yielding browser control to the tests file")
 #     yield chrome_browser
 #     chrome_browser.get(const.URL_CONTACTS)
 #     current_page = ContactListPage(chrome_browser)

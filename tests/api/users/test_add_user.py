@@ -1,16 +1,16 @@
-"""API test Add user"""
+"""API tests Add user"""
 
 
 import requests
 import pytest
-from test.api.test_data_api_users import BASE_URL, HEADERS, UserData
+from test_data.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
 @pytest.mark.high
 @pytest.mark.smoke
 @pytest.mark.API
 def test_add_user_success():
-    """Positive test: successful user registration."""
+    """Positive tests: successful user registration."""
     user_data = UserData.generate_user_data()
 
     response = requests.post(f"{BASE_URL}/users",
@@ -28,7 +28,7 @@ def test_add_user_success():
 @pytest.mark.smoke
 @pytest.mark.API
 def test_add_user_existing_email():
-    """Negative test: adding a user with an existing email."""
+    """Negative tests: adding a user with an existing email."""
     user_data = UserData.generate_user_data()
 
     response = requests.post(f"{BASE_URL}/users",
@@ -50,7 +50,7 @@ def test_add_user_existing_email():
 @pytest.mark.regress
 @pytest.mark.API
 def test_add_user_no_first_name():
-    """Negative test: adding a user without the required 'firstName' field."""
+    """Negative tests: adding a user without the required 'firstName' field."""
     user_data = UserData.generate_user_data()
     del user_data["firstName"]
 
@@ -70,7 +70,7 @@ def test_add_user_no_first_name():
 @pytest.mark.regress
 @pytest.mark.API
 def test_add_user_invalid_email():
-    """Negative test: adding a user with an invalid email format."""
+    """Negative tests: adding a user with an invalid email format."""
     user_data = UserData.generate_user_data()
     user_data["email"] = "invalid-email-format"
 
@@ -90,7 +90,7 @@ def test_add_user_invalid_email():
 @pytest.mark.regress
 @pytest.mark.API
 def test_add_user_short_password():
-    """Negative test: adding a user with a short password."""
+    """Negative tests: adding a user with a short password."""
     user_data = UserData.generate_user_data()
     user_data["password"] = "short"
 

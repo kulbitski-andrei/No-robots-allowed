@@ -1,16 +1,16 @@
-"""API test Delete user"""
+"""API tests Delete user"""
 
 
 import pytest
 import requests
-from test.api.test_data_api_users import BASE_URL
+from test_data.test_data_api_users import BASE_URL
 
 
 @pytest.mark.high
 @pytest.mark.smoke
 @pytest.mark.API
 def test_delete_user(auth_token_and_user_data):
-    """Positive test: Successfully delete a user."""
+    """Positive tests: Successfully delete a user."""
     token, _ = auth_token_and_user_data  # Распаковываем кортеж
     headers = {
         "Authorization": f"Bearer {token}"
@@ -28,7 +28,7 @@ def test_delete_user(auth_token_and_user_data):
 @pytest.mark.regress
 @pytest.mark.API
 def test_delete_user_invalid_token():
-    """Negative test: Attempt to delete a user with an invalid token."""
+    """Negative tests: Attempt to delete a user with an invalid token."""
     invalid_token = "invalid_token"
     headers = {
         "Authorization": f"Bearer {invalid_token}"
@@ -48,7 +48,7 @@ def test_delete_user_invalid_token():
 @pytest.mark.regress
 @pytest.mark.API
 def test_delete_user_twice(auth_token_and_user_data):
-    """Negative test: Attempt to delete a user twice."""
+    """Negative tests: Attempt to delete a user twice."""
     token, _ = auth_token_and_user_data  # Распаковываем кортеж
     headers = {
         "Authorization": f"Bearer {token}"
@@ -73,7 +73,7 @@ def test_delete_user_twice(auth_token_and_user_data):
 @pytest.mark.smoke
 @pytest.mark.API
 def test_delete_user_non_existent(auth_token_and_user_data):
-    """Negative test: Attempt to delete a non-existent user."""
+    """Negative tests: Attempt to delete a non-existent user."""
     invalid_token = "invalid_token"
     headers = {
         "Authorization": f"Bearer {invalid_token}"

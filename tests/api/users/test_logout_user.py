@@ -1,16 +1,16 @@
-"""API test Logout user"""
+"""API tests Logout user"""
 
 
 import pytest
 import requests
-from test.api.test_data_api_users import BASE_URL
+from test_data.test_data_api_users import BASE_URL
 
 
 @pytest.mark.high
 @pytest.mark.smoke
 @pytest.mark.API
 def test_logout_user(auth_token_and_user_data):
-    """Positive test: Successfully log out a user."""
+    """Positive tests: Successfully log out a user."""
     token, _ = auth_token_and_user_data  # распаковываем кортеж
     headers = {
         "Authorization": f"Bearer {token}"
@@ -29,7 +29,7 @@ def test_logout_user(auth_token_and_user_data):
 @pytest.mark.regress
 @pytest.mark.API
 def test_logout_user_invalid_token():
-    """Negative test: Attempt to log out with an invalid token."""
+    """Negative tests: Attempt to log out with an invalid token."""
     invalid_token = "invalid_token"
     headers = {
         "Authorization": f"Bearer {invalid_token}"
@@ -49,7 +49,7 @@ def test_logout_user_invalid_token():
 @pytest.mark.regress
 @pytest.mark.API
 def test_logout_user_twice(auth_token_and_user_data):
-    """Negative test: Attempt to log out twice."""
+    """Negative tests: Attempt to log out twice."""
     token, _ = auth_token_and_user_data
     headers = {
         "Authorization": f"Bearer {token}"

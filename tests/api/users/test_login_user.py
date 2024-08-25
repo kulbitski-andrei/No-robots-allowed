@@ -1,16 +1,16 @@
-"""API test Login user"""
+"""API tests Login user"""
 
 
 import pytest
 import requests
-from test.api.test_data_api_users import BASE_URL, HEADERS, UserData
+from test_data.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
 @pytest.mark.high
 @pytest.mark.smoke
 @pytest.mark.API
 def test_login_user_success(auth_token_and_user_data):
-    """Positive test: Log in with correct credentials."""
+    """Positive tests: Log in with correct credentials."""
     token, user_data = auth_token_and_user_data
     login_data = {
         "email": user_data["email"],
@@ -34,7 +34,7 @@ def test_login_user_success(auth_token_and_user_data):
 @pytest.mark.smoke
 @pytest.mark.API
 def test_login_user_incorrect_password(auth_token_and_user_data):
-    """Negative test: Attempt to log in with incorrect password."""
+    """Negative tests: Attempt to log in with incorrect password."""
     token, user_data = auth_token_and_user_data
     login_data = {
         "email": user_data["email"],
@@ -66,7 +66,7 @@ def test_login_user_incorrect_password(auth_token_and_user_data):
 @pytest.mark.regress
 @pytest.mark.API
 def test_login_user_non_existent_email():
-    """Negative test: Attempt to log in with a non-existent email."""
+    """Negative tests: Attempt to log in with a non-existent email."""
     login_data = {
         "email": UserData.generate_non_existent_email(),
         "password": "ValidPassword123"
@@ -85,7 +85,7 @@ def test_login_user_non_existent_email():
 @pytest.mark.regress
 @pytest.mark.API
 def test_login_user_invalid_email_format():
-    """Negative test: Attempt to log in with an invalid email format."""
+    """Negative tests: Attempt to log in with an invalid email format."""
     login_data = {
         "email": "invalid-email-format",
         "password": "ValidPassword123"

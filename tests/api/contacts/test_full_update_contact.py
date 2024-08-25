@@ -1,14 +1,14 @@
-"""API test Full Update Contact"""
+"""API tests Full Update Contact"""
 
 import pytest
 import requests
-from test.api.test_data_api_users import BASE_URL
+from test_data.test_data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
 
 
 @pytest.fixture
 def valid_token():
-    """API test Add user"""
+    """API tests Add user"""
     valid_token = VALID_TOKEN
     return valid_token
 

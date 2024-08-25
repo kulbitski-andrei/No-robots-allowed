@@ -1,16 +1,16 @@
-"""API test Update user"""
+"""API tests Update user"""
 
 
 import requests
 import pytest
-from test.api.test_data_api_users import BASE_URL, HEADERS, UserData
+from test_data.test_data_api_users import BASE_URL, HEADERS, UserData
 
 
 @pytest.mark.high
 @pytest.mark.smoke
 @pytest.mark.API
 def test_update_user_profile_success(auth_token_and_user_data):
-    """Positive test: Successfully update user profile information."""
+    """Positive tests: Successfully update user profile information."""
     auth_token, _ = auth_token_and_user_data
     update_data = UserData.generate_user_data()
 
@@ -37,7 +37,7 @@ def test_update_user_profile_success(auth_token_and_user_data):
 @pytest.mark.regress
 @pytest.mark.API
 def test_update_user_profile_existing_email(auth_token_and_user_data):
-    """Negative test: Attempt to update user profile with an existing email."""
+    """Negative tests: Attempt to update user profile with an existing email."""
     auth_token, user_data = auth_token_and_user_data
 
     existing_user_data = UserData.generate_user_data()
@@ -79,7 +79,7 @@ def test_update_user_profile_existing_email(auth_token_and_user_data):
 @pytest.mark.regress
 @pytest.mark.API
 def test_update_user_profile_malformed_email(auth_token_and_user_data):
-    """Negative test: Attempt to update user profile with a malformed email."""
+    """Negative tests: Attempt to update user profile with a malformed email."""
     auth_token, _ = auth_token_and_user_data
 
     update_data = UserData.generate_user_data()
@@ -116,7 +116,7 @@ def test_update_user_profile_malformed_email(auth_token_and_user_data):
 @pytest.mark.regress
 @pytest.mark.API
 def test_update_user_profile_weak_password(auth_token_and_user_data):
-    """Negative test: Attempt to update user profile with a weak password."""
+    """Negative tests: Attempt to update user profile with a weak password."""
     auth_token, _ = auth_token_and_user_data
 
     update_data = UserData.generate_user_data()
