@@ -10,7 +10,7 @@ from pages.edit_contact_page import (EditContactPage, first_name_field,
                                      street1_field, street2_field,
                                      city_field, state_province_field,
                                      postal_code_field, country_field)
-import test_data.constants as const
+import tests.test_data.constants as const
 from log_test.log_setup import logger
 
 

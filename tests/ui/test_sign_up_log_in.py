@@ -6,8 +6,8 @@ from pages.base_page import logout_button
 from pages.login_page import LoginPage, submit_button, signup_button
 from pages.contact_list_page import ContactListPage
 from pages.signup_page import SignupPage
-import test_data.constants as const
-from test_data.service_methods import generate_random_email
+import tests.test_data.constants as const
+from tests.test_data import generate_random_email
 from log_test.log_setup import logger
 
 

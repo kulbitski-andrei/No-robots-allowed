@@ -4,7 +4,7 @@ import time
 import pytest
 from pages.contact_list_page import ContactListPage, add_contact_button
 from pages.add_contact_page import AddContactPage
-import test_data.constants as const
+import tests.test_data.constants as const
 from log_test.log_setup import logger
 
 
