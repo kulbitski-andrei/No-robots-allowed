@@ -3,7 +3,7 @@
 
 import pytest
 import requests
-from test_data.test_data_api_users import BASE_URL, HEADERS, UserData
+from test_data.data_api_users import BASE_URL, HEADERS, UserData
 
 
 @pytest.fixture
