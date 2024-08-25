@@ -37,7 +37,8 @@ def test_update_user_profile_success(auth_token_and_user_data):
 @pytest.mark.regress
 @pytest.mark.API
 def test_update_user_profile_existing_email(auth_token_and_user_data):
-    """Negative tests: Attempt to update user profile with an existing email."""
+    """Negative tests: Attempt to update
+    user profile with an existing email."""
     auth_token, user_data = auth_token_and_user_data
 
     existing_user_data = UserData.generate_user_data()
