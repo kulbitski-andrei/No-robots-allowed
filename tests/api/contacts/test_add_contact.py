@@ -2,7 +2,7 @@
 
 import requests
 import pytest
-from tests.api.users.data_api_users import BASE_URL
+from tests.api.data_api_users import BASE_URL
 from test_data.constants import VALID_TOKEN
 
 
