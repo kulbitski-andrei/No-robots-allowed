@@ -2,31 +2,7 @@
 
 import pytest
 import requests
-from tests.api.data_api_users import BASE_URL
-from test_data.constants import VALID_TOKEN
-
-
-@pytest.fixture
-def valid_token():
-    """API tests Add user"""
-    valid_token = VALID_TOKEN
-    return valid_token
-
-
-@pytest.fixture
-def create_contact(valid_token):
-    """Create contact"""
-    headers = {
-        "Authorization": f"Bearer {valid_token}",
-        "Content-Type": "application/json"
-    }
-
-    response = requests.post(f"{BASE_URL}/contacts",
-                             headers=headers, json={"firstName": "John",
-                                                    "lastName": "Doe"})
-    response = response.json()
-    contact_id = response["_id"]
-    return contact_id
+from tests.api.contacts.test_data_api_contacts import BASE_URL
 
 
 @pytest.mark.medium

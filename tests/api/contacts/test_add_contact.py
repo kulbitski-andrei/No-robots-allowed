@@ -1,34 +1,8 @@
-"""API tests Add Contact"""
+"""API test Add Contact"""
 
 import requests
 import pytest
-from tests.api.data_api_users import BASE_URL
-from test_data.constants import VALID_TOKEN
-
-
-@pytest.fixture
-def valid_token():
-    """Getting valid token"""
-    valid_token = VALID_TOKEN
-    return valid_token
-
-
-@pytest.fixture
-def contact_data():
-    """Contact data fixture"""
-    return {
-        "firstName": "John",
-        "lastName": "Doe",
-        "birthdate": "1970-01-01",
-        "email": "jdoe@fake.com",
-        "phone": "8005555555",
-        "street1": "1 Main St.",
-        "street2": "Apartment A",
-        "city": "Anytown",
-        "stateProvince": "KS",
-        "postalCode": "12345",
-        "country": "USA"
-    }
+from tests.api.contacts.test_data_api_contacts import BASE_URL
 
 
 @pytest.mark.high

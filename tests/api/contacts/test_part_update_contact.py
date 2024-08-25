@@ -1,41 +1,9 @@
-"""API tests Part Update Contact"""
+"""API test Part Update Contact"""
 
 
 import pytest
 import requests
-from tests.api.data_api_users import BASE_URL
-from test_data.constants import VALID_TOKEN
-
-
-@pytest.fixture
-def create_contact(valid_token):
-    """Create contact"""
-    headers = {
-        "Authorization": f"Bearer {valid_token}",
-        "Content-Type": "application/json"
-    }
-
-    response = requests.post(f"{BASE_URL}/contacts",
-                             headers=headers, json={"firstName": "John",
-                                                    "lastName": "Doe"})
-    response = response.json()
-    contact_id = response["_id"]
-    return contact_id
-
-
-@pytest.fixture
-def valid_token():
-    """Getting a valid token"""
-    valid_token = VALID_TOKEN
-    return valid_token
-
-
-@pytest.fixture
-def update_data():
-    """Data for updating contacts"""
-    return {
-
-    }
+from tests.api.contacts.test_data_api_contacts import BASE_URL
 
 
 @pytest.mark.medium

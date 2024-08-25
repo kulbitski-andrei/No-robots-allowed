@@ -1,50 +1,8 @@
-"""API tests Full Update Contact"""
+"""API test Full Update Contact"""
 
 import pytest
 import requests
-from tests.api.data_api_users import BASE_URL
-from test_data.constants import VALID_TOKEN
-
-
-@pytest.fixture
-def valid_token():
-    """API tests Add user"""
-    valid_token = VALID_TOKEN
-    return valid_token
-
-
-@pytest.fixture
-def create_contact(valid_token):
-    """Create contact"""
-    headers = {
-        "Authorization": f"Bearer {valid_token}",
-        "Content-Type": "application/json"
-    }
-
-    response = requests.post(f"{BASE_URL}/contacts",
-                             headers=headers, json={"firstName": "John",
-                                                    "lastName": "Doe"})
-    response = response.json()
-    contact_id = response["_id"]
-    return contact_id
-
-
-@pytest.fixture
-def update_data():
-    """Update data"""
-    return {
-        "firstName": "Tester",
-        "lastName": "Test",
-        "birthdate": "1992-02-02",
-        "email": "tester@fake.com",
-        "phone": "8005554242",
-        "street1": "13 School St.",
-        "street2": "Apt. 5",
-        "city": "Washington",
-        "stateProvince": "QC",
-        "postalCode": "A1A1A1",
-        "country": "Canada"
-    }
+from tests.api.contacts.test_data_api_contacts import BASE_URL
 
 
 @pytest.mark.high
