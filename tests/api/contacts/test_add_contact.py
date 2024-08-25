@@ -31,6 +31,9 @@ def contact_data():
     }
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_create_contact_success(valid_token, contact_data):
     """Successful creation of a contact."""
     headers = {
@@ -45,6 +48,9 @@ def test_create_contact_success(valid_token, contact_data):
         f"Expected 201, but got {response.status_code}"
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_create_contact_missing_required_fields(valid_token):
     """Creating a contact with missing required fields."""
     incomplete_contact_data = {
@@ -63,6 +69,9 @@ def test_create_contact_missing_required_fields(valid_token):
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_create_contact_invalid_email(valid_token, contact_data):
     """Creating a contact with invalid email."""
     contact_data["email"] = "failed_emai@sss"
@@ -79,6 +88,9 @@ def test_create_contact_invalid_email(valid_token, contact_data):
                                          f" but got {response.status_code}")
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_create_contact_unauthorized():
     """Creating a contact without authorization."""
     contact_data = {
@@ -97,6 +109,9 @@ def test_create_contact_unauthorized():
                                          f" but got {response.status_code}")
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_create_contact_invalid_phone(valid_token, contact_data):
     """Creating a contact with invalid phone number."""
     contact_data["phone"] = "1354315343543"
@@ -113,6 +128,9 @@ def test_create_contact_invalid_phone(valid_token, contact_data):
                                          f" but got {response.status_code}")
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_create_contact_invalid_birthdate(valid_token, contact_data):
     """Creating a contact with invalid date of birth."""
     contact_data["birthdate"] = "12/12/1999"
@@ -129,6 +147,9 @@ def test_create_contact_invalid_birthdate(valid_token, contact_data):
                                          f" but got {response.status_code}")
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_create_contact_invalid_postalcode(valid_token, contact_data):
     """Creating a contact with invalid postal code."""
     contact_data["postalCode"] = "1351564599"

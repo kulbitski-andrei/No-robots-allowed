@@ -6,9 +6,9 @@ import requests
 from tests.api.test_data_api_users import BASE_URL
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_logout
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_logout_user(auth_token_and_user_data):
     """Positive test: Successfully log out a user."""
     token, _ = auth_token_and_user_data  # распаковываем кортеж
@@ -25,9 +25,9 @@ def test_logout_user(auth_token_and_user_data):
                                  "for successful logout")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_logout
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_logout_user_invalid_token():
     """Negative test: Attempt to log out with an invalid token."""
     invalid_token = "invalid_token"
@@ -45,9 +45,9 @@ def test_logout_user_invalid_token():
          f"but got {response_data.get('error')}")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_logout
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_logout_user_twice(auth_token_and_user_data):
     """Negative test: Attempt to log out twice."""
     token, _ = auth_token_and_user_data

@@ -13,6 +13,9 @@ def valid_token():
     return valid_token
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_get_list_contacts(valid_token):
     """Getting a list of contacts"""
     headers = {
@@ -26,6 +29,9 @@ def test_get_list_contacts(valid_token):
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_get_list_contacts_without_auth(valid_token):
     """Getting a list of contacts without auth"""
     headers = {

@@ -29,6 +29,9 @@ def create_contact(valid_token):
     return contact_id
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_delete_contact_twice(valid_token):
     """Deleting a contact twice"""
     headers = {
@@ -41,6 +44,9 @@ def test_delete_contact_twice(valid_token):
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_delete_contact(valid_token, create_contact):
     """Deleting a contact should succeed"""
     headers = {
@@ -53,6 +59,9 @@ def test_delete_contact(valid_token, create_contact):
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_delete_contact_with_invalid_id(valid_token):
     """Deleting a contact with invalid id"""
     headers = {
@@ -66,6 +75,9 @@ def test_delete_contact_with_invalid_id(valid_token):
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_delete_contact_without_auth(valid_token):
     """Deleting a contact without auth"""
     headers = {

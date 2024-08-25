@@ -6,9 +6,9 @@ import requests
 from tests.api.test_data_api_users import BASE_URL
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_deleteuser
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_delete_user(auth_token_and_user_data):
     """Positive test: Successfully delete a user."""
     token, _ = auth_token_and_user_data  # Распаковываем кортеж
@@ -24,9 +24,9 @@ def test_delete_user(auth_token_and_user_data):
                                  "for successful delete")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_deleteuser
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_delete_user_invalid_token():
     """Negative test: Attempt to delete a user with an invalid token."""
     invalid_token = "invalid_token"
@@ -44,9 +44,9 @@ def test_delete_user_invalid_token():
          f"but got {response_data.get('error')}")
 
 
-@pytest.mark.priority_medium
-@pytest.mark.api_deleteuser
-@pytest.mark.level_regression
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_delete_user_twice(auth_token_and_user_data):
     """Negative test: Attempt to delete a user twice."""
     token, _ = auth_token_and_user_data  # Распаковываем кортеж
@@ -69,9 +69,9 @@ def test_delete_user_twice(auth_token_and_user_data):
          f"but got {response_data.get('error')}")
 
 
-@pytest.mark.priority_high
-@pytest.mark.api_deleteuser
-@pytest.mark.level_smoke
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_delete_user_non_existent(auth_token_and_user_data):
     """Negative test: Attempt to delete a non-existent user."""
     invalid_token = "invalid_token"

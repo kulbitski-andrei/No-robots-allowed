@@ -47,6 +47,9 @@ def update_data():
     }
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_full_update_contact(valid_token, update_data, create_contact):
     """Successful update Contact"""
     headers = {
@@ -84,6 +87,9 @@ def test_full_update_contact(valid_token, update_data, create_contact):
         "Country did not update correctly"
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_full_update_contact_without_auth(valid_token,
                                           update_data, create_contact):
     """Update contact without auth"""
@@ -97,6 +103,9 @@ def test_full_update_contact_without_auth(valid_token,
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.high
+@pytest.mark.smoke
+@pytest.mark.API
 def test_full_update_contact_with_invalid_field(valid_token,
                                                 update_data, create_contact):
     """Update contact without invalid field"""
@@ -112,6 +121,9 @@ def test_full_update_contact_with_invalid_field(valid_token,
                                          f"but got {response.status_code}")
 
 
+@pytest.mark.medium
+@pytest.mark.regress
+@pytest.mark.API
 def test_full_update_contact_with_empty_field(valid_token,
                                               update_data, create_contact):
     """Update contact with empty field"""
