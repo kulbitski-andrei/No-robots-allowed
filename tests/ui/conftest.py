@@ -3,7 +3,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import test_data as const
+import test_data.constants as const
 from log_test.log_setup import logger
 # from pages.contact_details_page import ContactDetailsPage, delete_button
 # from pages.contact_list_page import ContactListPage, logout_button

@@ -19,6 +19,7 @@ pipeline {
             steps {
                 sh '''
                     . venv/bin/activate
+                    export PYTHONPATH=$PYTHONPATH:/var/jenkins_home/workspace/API_pipeline
                     pytest --alluredir=allure-results -m API
                 '''
             }
