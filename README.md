@@ -79,7 +79,7 @@ UI: Run ui test suite.
 ## Running Tests with Docker and Jenkins
 
 ### Docker setup
-* dockerfile is in the repository
+(!) dockerfile is in the repository
 - Navigate to your project directory
 ```bash
 docker build --platform linux/amd64 .
@@ -89,7 +89,7 @@ docker run -d -p 8080:8080 -p 50000:50000 --restart=on-failure <imageID>
 Access to Jenkins: http://localhost:8080
 
 ### Configure Jenkins Pipeline
-* jenkinsfile is in the repository
+(!) jenkinsfile is in the repository
 - Create a new Jenkins pipeline
 - Set up the pipeline script to execute the pytest command
 
